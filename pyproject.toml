@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ui-ref-cli"
+version = "0.3.0"
+description = "Local UI reference research CLI: index local UI reference images and politely collect reference pages from UI databases (Game UI Database and more)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["ui", "ux", "reference", "design", "research", "scraping"]
+dependencies = []
+
+[project.optional-dependencies]
+browser = ["playwright>=1.40"]
+
+[project.urls]
+Homepage = "https://github.com/SillyToolValley/Game-UI-Reference-Cli"
+Repository = "https://github.com/SillyToolValley/Game-UI-Reference-Cli"
+
+[project.scripts]
+ui-ref = "ui_ref_cli:main"
+
+[tool.setuptools]
+py-modules = ["ui_ref_cli"]

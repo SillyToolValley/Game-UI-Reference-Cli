@@ -1,0 +1,172 @@
+# Game-UI-Reference-Cli
+
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Core deps](https://img.shields.io/badge/core%20dependencies-0-brightgreen)
+
+A small, dependency-light CLI for **UI reference research**, focused on game UI. It
+indexes the UI reference images you already keep locally, and (optionally) collects
+reference pages from public UI databases — rendering them, caching their HTML and
+image metadata, and downloading thumbnails on request — so you can study UI/UX
+patterns.
+
+The primary, structured source is **[Game UI Database](https://www.gameuidatabase.com)
+(gameuidatabase.com)**. Several other public UI/UX reference galleries also work via a
+generic image-harvest mode (see [Supported sites](#supported-sites)).
+
+It is deliberately conservative and polite:
+
+- local references are indexed first;
+- external URLs are fetched **only when you list them** (no crawling);
+- assets are **not** downloaded unless you ask;
+- a politeness delay, a per-run page cap, and a `robots.txt` check are built in.
+
+> **Login-walled sites are out of scope.** Sites whose galleries require an account
+> (e.g. Mobbin's app screens) cannot be collected by this tool and are intentionally
+> not supported. This is a personal research helper — not a general-purpose scraper,
+> and not for redistributing other people's assets. Respect each site's terms and
+> `robots.txt`.
+
+## Install
+
+```bash
+git clone https://github.com/SillyToolValley/Game-UI-Reference-Cli
+cd Game-UI-Reference-Cli
+pip install -e .
+```
+
+Optional browser support (required for JavaScript-rendered sites — i.e. most of them):
+
+```bash
+pip install -e ".[browser]"
+playwright install chromium     # one-time: downloads the headless browser
+```
+
+| | `scan-local` | `collect` (static) | `collect --browser` |
+| --- | --- | --- | --- |
+| Needs only Python stdlib | ✅ | ✅ | — |
+| Needs `playwright` + a browser | — | — | ✅ |
+| Works on server-rendered pages | n/a | ✅ | ✅ |
+| Works on JS-rendered reference sites | n/a | ✗ (0 items) | ✅ |
+
+The browser path uses **Playwright** directly (a realistic desktop UA + viewport, with
+optional auto-scroll to load lazy images). No stealth/anti-bot layer is bundled — the
+supported public sites serve their content to a normal headless browser; the built-in
+politeness is what keeps runs well-behaved.
+
+## Quick start
+
+From your project root:
+
+```bash
+ui-ref init --project-name "My Project"
+# put reference images under references/ui/<collection>/<category>/*.png|jpg|...
+ui-ref scan-local
+```
+
+## Commands
+
+### `scan-local` — index local references
+
+Walks `references/ui/<collection>/<category>/<file>`, reads image dimensions from the
+file bytes (PNG/GIF/JPEG, no Pillow needed), infers coarse tags from the folder path,
+and writes a JSON + Markdown manifest under `ui_research/manifests/`.
+
+### `collect` — fetch explicitly listed pages
+
+Put reference URLs (one per line) into `ui_research/urls.txt`, then:
+
+```bash
+# JS-rendered sites → use the browser. The right mode is auto-detected per URL's domain.
+ui-ref collect --browser
+
+# download a couple of images per page + scroll to load lazy ones
+ui-ref collect --browser --scroll 6 --download-gallery-assets --download-asset-limit 2
+
+# force a mode or a gallery class for an unknown site
+ui-ref collect --browser --mode images
+ui-ref collect --browser --gallery-class "thumb-card"
+```
+
+You can mix URLs from different supported sites in one `urls.txt` — each URL picks its
+own preset automatically.
+
+Each run writes, under `ui_research/manifests/`:
+
+- `collected_pages_<run_id>.json` — per-page status, robots note, page title, and
+  link/asset/gallery metadata;
+- `contact_sheet_<run_id>.html` — a **browsable** sheet: downloaded thumbnails render
+  inline, and every extracted/harvested image is listed with its title/size and a
+  source link. Open it in a browser to review what you gathered.
+
+Useful flags: `--site`, `--mode`, `--gallery-class`, `--scroll`, `--max-pages`,
+`--delay`, `--timeout`, `--user-agent`, `--keep-*`, `--download-full-images`,
+`--no-headless`.
+
+## Supported sites
+
+Two extraction modes:
+
+- **`gallery`** — structured: reads gallery anchors (an anchor class plus
+  `data-title` / `data-imageid` / `data-thumb`). Rich per-item metadata.
+- **`images`** — generic: harvests the rendered page's `<img>`/`srcset` images
+  (obvious chrome like icons/avatars/logos is filtered out). Works on most sites.
+
+The right mode/preset is auto-detected from each URL's domain; override with `--site`,
+`--mode`, or `--gallery-class`.
+
+| Site key | Domain | Mode | Notes |
+| --- | --- | --- | --- |
+| `gameuidatabase` | gameuidatabase.com | gallery | Game UI Database — structured gallery (use `--browser`). |
+| `interfaceingame` | interfaceingame.com | images | Interface In Game — game UI screenshots. |
+| `screenlane` | screenlane.com | images | Mobile UI/UX flows. |
+| `collectui` | collectui.com | images | Daily UI inspiration. |
+| `landbook` | land-book.com | images | Landing-page gallery. |
+| `lapaninja` | lapa.ninja | images | Landing-page examples. |
+| `refero` | refero.design | images | Web/iOS UI inspiration. |
+| `dribbble` | dribbble.com | images | Design shots (public pages). |
+| `behance` | behance.net | images | Creative showcase (public pages). |
+
+Any **other** site without a preset defaults to `images` mode (generic harvest). A site
+whose galleries require login is not supported.
+
+### Adding a site
+
+Add one entry to `SITE_PRESETS` in `ui_ref_cli.py` (and a row to the table above):
+
+```python
+SITE_PRESETS = {
+    "gameuidatabase": {"match": "gameuidatabase.com", "mode": "gallery",
+                       "gallery_class": "galleryimage", "notes": "..."},
+    # generic image-harvest site:
+    "mysite": {"match": "example.com", "mode": "images", "notes": "..."},
+}
+```
+
+- `match` — a domain substring used to auto-select the preset from a URL.
+- `mode` — `"gallery"` (needs `gallery_class`) or `"images"` (generic harvest).
+- `gallery_class` — for gallery mode, the `<a>` class that marks a gallery image. If a
+  site exposes gallery metadata under different attribute names than
+  `data-title` / `data-imageid` / `data-thumb`, extend `LinkExtractor.handle_starttag`.
+
+## Config discovery
+
+Without `--config`, the CLI looks for `ui_ref_config.json` in:
+
+```text
+ui_ref_config.json
+ui_research/ui_ref_config.json
+docs/ui_research/ui_ref_config.json
+```
+
+Use `--project-root` to run against a project folder from elsewhere.
+
+## Etiquette
+
+Keep runs small and slow (the defaults are an 8s delay and 20 pages/run). Treat
+collected pages as citation/reference context — not a redistributable asset pack, and
+not training data.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
