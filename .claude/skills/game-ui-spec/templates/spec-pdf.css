@@ -1,0 +1,81 @@
+/* game-ui-spec — landscape PDF stylesheet for the UX/UI 기획서.
+   Source stays in markdown; build_pdf.py renders md -> HTML -> (Chrome) -> PDF.
+   Wide 16:9 page so the 10-column legend / state tables read without ugly wrapping. */
+
+@page {
+  size: 406mm 228mm;            /* ~16:9 landscape, wider than A3 — fits wide spec tables */
+  margin: 13mm 15mm 15mm 15mm;
+}
+@page :first { margin-top: 22mm; }
+
+:root {
+  --ink:#1a2233; --muted:#5b6577; --line:#d7deea; --accent:#1e3a8a; --accent2:#5b8def;
+  --thead:#1e3a8a; --zebra:#f4f7fc; --chip:#eef2fb; --warn:#b45309;
+}
+
+* { box-sizing:border-box; }
+html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+/* JetBrains Mono for Latin/numbers/code; Korean falls back to a proportional Hangul font
+   (JetBrains Mono has no Hangul glyphs). Font must be installed, or @font-face it locally. */
+body {
+  font-family:"JetBrains Mono","Malgun Gothic","Apple SD Gothic Neo","Segoe UI",monospace;
+  color:var(--ink); font-size:13px; line-height:1.6; margin:0;
+  word-break:keep-all;          /* KEY: keep Korean words intact, break at spaces only */
+  overflow-wrap:anywhere;
+}
+
+/* ---- headings ---- */
+h1 { font-size:34px; line-height:1.2; margin:0 0 6px; color:var(--accent);
+     border-bottom:3px solid var(--accent); padding-bottom:10px; letter-spacing:-.3px; }
+h2 { font-size:22px; margin:22px 0 9px; color:var(--accent); padding:6px 0 5px;
+     border-bottom:1.5px solid var(--line); }
+h3 { font-size:17px; margin:18px 0 7px; color:#13224a;
+     background:var(--chip); border-left:4px solid var(--accent); padding:7px 11px; border-radius:0 4px 4px 0; }
+h4 { font-size:14px; margin:13px 0 5px; color:var(--accent); }
+/* each per-screen section (### 5.x) starts a fresh page */
+h3.screen-break { break-before:page; }
+
+p { margin:5px 0; }
+strong, b { color:#10203f; }
+code { font-family:"JetBrains Mono","Cascadia Code","Consolas",monospace; font-size:.94em;
+       background:#eef1f6; padding:1px 4px; border-radius:3px; color:#1b2a4a; }
+a { color:var(--accent); text-decoration:none; border-bottom:1px solid #c4d2ee; }
+
+/* ---- callout blockquotes ---- */
+blockquote { margin:9px 0; padding:9px 13px; background:#f7f9fd;
+  border-left:4px solid var(--accent2); border-radius:0 5px 5px 0; color:#33415c; font-size:12px; }
+blockquote p { margin:3px 0; }
+
+/* ---- tables: the readability fix ----
+   auto layout + keep-all so columns size to content and Korean wraps at spaces,
+   not mid-word; the wide 16:9 page gives long columns (GWT / UX 근거) room. */
+table { width:100%; border-collapse:collapse; margin:9px 0 16px; font-size:11px;
+        table-layout:auto; break-inside:auto; }
+thead { display:table-header-group; }          /* repeat header on page break */
+tr { break-inside:avoid; }
+th, td { border:1px solid var(--line); padding:6px 8px; vertical-align:top; text-align:left;
+         word-break:keep-all; overflow-wrap:anywhere; line-height:1.45; }
+th { background:var(--thead); color:#fff; font-weight:700; font-size:11px; line-height:1.3;
+     white-space:nowrap; }
+tbody tr:nth-child(even) { background:var(--zebra); }
+td code { font-size:.9em; white-space:normal; }
+
+/* ---- images / wireframes ---- */
+img { max-width:100%; height:auto; }
+img[src$=".svg"], img.wire {
+  width:100%; display:block; margin:8px auto 4px; border:1px solid var(--line); border-radius:6px;
+  break-inside:avoid; background:#0b0f1a; }
+img[src$=".jpg"], img[src$=".png"]:not(.wire) {
+  max-width:560px; border:1px solid var(--line); border-radius:5px; margin:6px 0; }
+figure { margin:8px 0; break-inside:avoid; }
+figcaption { color:var(--muted); font-size:9.5px; margin-top:3px; }
+
+/* ---- lists & rules ---- */
+ul, ol { margin:5px 0 5px 20px; } li { margin:2px 0; }
+hr { border:none; border-top:1px solid var(--line); margin:14px 0; }
+
+/* checkbox-style acceptance lists render cleanly */
+li:has(input), li.task { list-style:none; }
+
+/* utility */
+.muted { color:var(--muted); } .small { font-size:9px; }

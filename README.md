@@ -64,6 +64,32 @@ ui-ref init --project-name "My Project"
 ui-ref scan-local
 ```
 
+## Companion skill: `game-ui-spec` (UX/UI 기획서)
+
+This repo ships a **Claude Code skill** that turns the references you gather here into an
+**exemplary game UX/UI design spec (UI/UX 기획서)** — purpose-built for survivor-like /
+bullet-heaven / roguelite games. It lives in [`.claude/skills/game-ui-spec/`](.claude/skills/game-ui-spec/).
+
+Given a GDD or feature brief, it produces a spec where:
+
+- **reference images are linked as separate files** (harvested with `ui-ref`, never embedded);
+- **wireframes are derived from those references**, with **every UI element numbered**, its
+  region marked by a rectangle/circle, and a **leader line pulled outside the frame** to a
+  description (SVG annotated-callout kit — see
+  [`templates/wireframe-kit.svg`](.claude/skills/game-ui-spec/templates/wireframe-kit.svg));
+- each screen carries a **legend table, state matrix, input-parity, and data-binding** tables;
+- every screen gets a rigorous **`UX 고찰`** section grounded in named game-UX heuristics
+  (Hodent, Nielsen, Pinelle/PLAY, accessibility guidelines); and
+- the markdown source renders to a **wide 16:9 landscape PDF** (`build_pdf.py` + `spec-pdf.css`)
+  so the dense spec tables stay readable for sharing.
+
+See [`.claude/skills/game-ui-spec/examples/`](.claude/skills/game-ui-spec/examples/) for what
+a generated spec looks like — a polished public sample will be added there later.
+
+To use it in your game project, copy the skill folder to that project's `.claude/skills/`
+(or to `~/.claude/skills/` for all projects), then ask Claude Code to "draw up the UX/UI
+기획서 for &lt;screen&gt;".
+
 ## Commands
 
 ### `scan-local` — index local references

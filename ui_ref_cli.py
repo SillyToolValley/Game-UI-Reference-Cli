@@ -534,7 +534,15 @@ def fetch_browser(url: str, timeout_ms: int, wait_ms: int, headless: bool, scrol
                                f"pip install 'ui-ref-cli[browser]' && playwright install chromium")
     try:
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(headless=headless)
+            try:
+                browser = pw.chromium.launch(headless=headless)
+            except Exception as exc:
+                msg = str(exc)
+                if "Executable doesn't exist" in msg or "playwright install" in msg.lower():
+                    return HtmlFetchResult(url, "ERROR", "", "", fetched_at,
+                        "Chromium is not installed for Playwright. Run this one-time setup "
+                        "(~150MB): playwright install chromium  — then retry `ui-ref collect --browser`.")
+                raise
             try:
                 context = browser.new_context(user_agent=user_agent, viewport={"width": 1366, "height": 900}, locale="en-US")
                 page = context.new_page()
