@@ -64,7 +64,7 @@ ui-ref init --project-name "My Project"
 ui-ref scan-local
 ```
 
-## Companion skill: `game-ui-spec` (UX/UI 기획서)
+## Companion skill: `game-ui-spec`
 
 This repo ships a **Claude Code skill** that turns the references you gather here into an
 **exemplary game UX/UI design spec (UI/UX 기획서)** — purpose-built for survivor-like /
