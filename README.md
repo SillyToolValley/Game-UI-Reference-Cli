@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Core deps](https://img.shields.io/badge/core%20dependencies-0-brightgreen)
 
+**English** · [中文](README.zh.md) · [한국어](README.ko.md) · [日本語](README.ja.md)
+
 A small, dependency-light CLI for **UI reference research**, focused on game UI. It
 indexes the UI reference images you already keep locally, and (optionally) collects
 reference pages from public UI databases — rendering them, caching their HTML and
@@ -26,6 +28,30 @@ It is deliberately conservative and polite:
 > not supported. This is a personal research helper — not a general-purpose scraper,
 > and not for redistributing other people's assets. Respect each site's terms and
 > `robots.txt`.
+
+## Sample output
+
+A full worked example lives in **[`examples/lucid-dawn/`](examples/lucid-dawn/)** — a complete
+UX/UI spec for a survivor-like/roguelite (*Lucid Dawn: Dream Survivor*), produced by the
+`game-ui-spec` skill from references harvested with `ui-ref`. **12 screens** (out-game + in-game),
+**13 annotated wireframes**, design tokens, a decision tracker, engine-binding & usability-test
+appendices — in **English / 中文 / 한국어**.
+
+| Annotated wireframe (HUD) | Annotated wireframe (Level-up) | Spec (rendered) |
+| --- | --- | --- |
+| ![HUD wireframe](docs/captures/hud.png) | ![Level-up wireframe](docs/captures/levelup.png) | ![Spec cover](docs/captures/spec-cover.png) |
+
+| Boss reward (skill tree) | Result (3 branches) | Character select |
+| --- | --- | --- |
+| ![Skill tree](docs/captures/skilltree.png) | ![Result](docs/captures/results.png) | ![Character select](docs/captures/character-select.png) |
+
+Every UI element is numbered, its region boxed/circled, a leader line pulled **outside** the frame
+to a gutter label, with a full legend + state matrix + data binding underneath. See the spec:
+[EN](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
+[中文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
+[한국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
+[日本語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
+[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf).
 
 ## Install
 
@@ -83,8 +109,9 @@ Given a GDD or feature brief, it produces a spec where:
 - the markdown source renders to a **wide 16:9 landscape PDF** (`build_pdf.py` + `spec-pdf.css`)
   so the dense spec tables stay readable for sharing.
 
-See [`.claude/skills/game-ui-spec/examples/`](.claude/skills/game-ui-spec/examples/) for what
-a generated spec looks like — a polished public sample will be added there later.
+See **[`examples/lucid-dawn/`](examples/lucid-dawn/)** for a full generated sample (12 screens,
+13 wireframes, tokens, decision tracker, EN/中文/한국어) — and the [Sample output](#sample-output)
+captures above.
 
 To use it in your game project, copy the skill folder to that project's `.claude/skills/`
 (or to `~/.claude/skills/` for all projects), then ask Claude Code to "draw up the UX/UI

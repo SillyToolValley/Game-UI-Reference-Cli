@@ -97,8 +97,41 @@ exists for stitching in extra sections if you ever want them.)
   screen on its own page, wireframes + inline reference images embedded. Headless Chrome/Edge.
 - **`spec.docx`** — landscape Word doc anyone on the team can edit (wireframes embedded as
   their PNG renders, so run the PDF/SVG render first). `.md` = source, PDF = read, DOCX = edit.
+- **Render gotcha:** `chrome --headless --screenshot=wireframes/x.png` sometimes writes nothing
+  to a project subfolder (profile/permission). Render to a temp dir then copy into `wireframes/`.
+
+## Process — OPTIONAL downstream stages (steps 8–11): lift the spec to production-grade
+
+The base spec (steps 0–7) is an **annotated-wireframe spec, not a hi-fi mockup**. When the user
+wants it "production-grade / 출하급", add these. Each has a template; fill it as a companion doc
+and link it from the spec's §4 + appendix.
+
+**8. Design tokens** (`templates/design-tokens.md` → `<spec>_tokens.md`). Color hex / typography /
+spacing / radius / **motion tokens (cite GDD timings)** / colorblind palette + **engine variable
+mapping** (UI Toolkit USS `--var`, Unreal Slate, CSS props). This is the single biggest gap — without
+it the "component inventory" is empty name-tags. Color never carries meaning alone.
+
+**9. Decisions/number tracker** (`templates/decisions-tracker.md` → `<spec>_decisions.md`). Classify
+EVERY number as `GDD확정 / 표준 / 추정` with status `OPEN/PROPOSED/LOCKED`, proposed default + how to
+confirm. Collect all `[확정 필요]` here. Keeps author-guessed timings from masquerading as canon.
+
+**10. Engine binding** (`references/engine-binding.md` → a spec appendix). Tie §5 data-binding to the
+chosen engine (UI Toolkit×DOTS, Unreal UMG×Mass…): no-GC event-driven updates, world vs screen space,
+heavy world text off the UI framework, localization. Grounds the spec in the real stack.
+
+**11. Usability test plan** (`templates/usability-test.md` → a spec appendix). Task scenarios ↔
+acceptance criteria, metrics (success rate / SUS / readability-under-chaos / colorblind), pass bar,
+iteration loop. The UX 고찰 is heuristic reasoning — this is how it gets validated. (Wireframe-only
+claims like readability-under-chaos MUST be re-validated in an engine build.)
 
 ## Load-bearing rules (do not skip — these are the silent failures)
+
+- **Positioning: this is a wireframe-level spec, not a hi-fi mockup.** Say so. Tokens (step 8),
+  mockups, clickable prototypes, and playtests (step 11) are downstream. Don't let "exemplary"
+  read as "finished UI."
+- **Number-source labels.** Every numeric in a GWT/legend carries its provenance — cite the GDD
+  line, mark `표준` (WCAG/platform), or tag `[PLACEHOLDER — needs GDD/playtest]`. Author-supplied
+  timings (animation ms, thresholds) go to the decisions tracker (step 9), never as silent canon.
 
 - **Embed references INLINE — never as separate files/links.** Each screen's `#### 참조`
   subsection embeds the curated reference images + the 무엇을/왜 notes **directly in the

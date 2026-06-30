@@ -122,6 +122,13 @@ diagrams (e.g. `hud.svg` + `hud-boss.svg`) rather than crowding leaders. A frame
   neighbor's vertical trunk (coincident segments that degrade into crossings as density
   grows). Offset channels slightly (`x=150 / 158 / 166`) **or** order callouts so a label
   row never falls inside a neighbor trunk's y-span.
+- **The left-gutter "x=60 sweep" trap (most common real crossing).** A left callout's FINAL
+  horizontal run goes from its channel all the way to the label at `x≈60`, so it sweeps the
+  whole `60..channel` band at the label's y. If another callout's vertical channel sits in that
+  band (e.g. `x=148/158`) and spans that y, they CROSS. Fix: route the crossing callout's label
+  **above/below** the other's exit y (so its vertical channel's y-range doesn't include the
+  sweep), or move its channel left of the other's terminus. Re-run `validate_wireframe.py` after
+  each move — it reports the exact crossing point. (Mirror on the right gutter toward `x=1530`.)
 
 **Convention conformance (geometry must match the prose).** If the spec's text promises a
 layout convention (e.g. "timer top-center, boss bar takes over that slot"), the wireframe's

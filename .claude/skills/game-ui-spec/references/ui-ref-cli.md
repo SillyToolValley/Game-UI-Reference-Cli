@@ -36,6 +36,22 @@ Each run writes to `ui_research/manifests/`: `collected_pages_<run_id>.json` and
 checked) — keep runs small. Login-walled sites (Mobbin) are out of scope. Unknown galleries
 auto-pick `--mode images`; override with `--mode images` / `--gallery-class`.
 
+> **SITE REALITY CHECK (learned the hard way).**
+> - **Game UI Database is SPA + Cloudflare → headless harvest is unreliable.** `index.php?&scrn=N`
+>   does NOT apply the screen-type filter on direct load (you get the same default/recent gallery
+>   for every `scrn`), and `gameData.php?id=N` per-game pages can time out under headless (Cloudflare
+>   challenge). If you see the same files repeat across different `scrn`, the filter didn't apply.
+> - **Prefer `interfaceingame.com` per-game pages** (`/games/<slug>/`) — they reliably return 30+
+>   real screenshots with descriptive filenames (game+screen) that curate easily. Category pages
+>   (`/main-menu/` etc.) return only 1 representative image — use them as entry points, not sources.
+> - **Find game ids/slugs fast:** site search is also SPA; use a web search ("Game UI Database
+>   <game> gameData.php") to get `?id=N`, or probe `interfaceingame.com/games/<slug>/` for 200.
+> - **`cover`/`banner` first:** per-game downloads grab the box-art cover/banner before screens —
+>   raise `--download-asset-limit` and curate out cover/banner.
+> - **Genre-direct fallback:** if the direct genre (e.g. survivor-like: Vampire Survivors/Brotato)
+>   isn't on your harvest site, gather the closest adjacents AND describe the direct-genre pattern
+>   in words inline (skill's worded-pattern fallback) + leave the harvest recipe to add real shots later.
+
 ## 3. Curate into `references/ui/<collection>/<category>/`
 Review the contact sheet, then **manually save the chosen images** into the local refs tree
 (the tool intentionally downloads only a few thumbnails — collected pages are citation

@@ -109,5 +109,6 @@ def check(path):
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print(__doc__); sys.exit(2)
-    allok = all(check(p) for p in sys.argv[1:])
-    sys.exit(0 if allok else 1)
+    # check ALL files (do not short-circuit on first failure — every file must be linted)
+    results = [check(p) for p in sys.argv[1:]]
+    sys.exit(0 if all(results) else 1)

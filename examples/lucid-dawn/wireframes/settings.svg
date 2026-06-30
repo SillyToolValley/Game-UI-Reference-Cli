@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 820" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="lead-dot" markerWidth="8" markerHeight="8" refX="4" refY="4"><circle cx="4" cy="4" r="3" fill="#1e3a8a"/></marker>
+    <style>
+      .frame{fill:#0f1422;stroke:#3b4a6b;stroke-width:2;} .zone{fill:#1a2336;stroke:#2c3a57;stroke-width:1;}
+      .region{fill:none;stroke:#5b8def;stroke-width:2;stroke-dasharray:6 4;}
+      .lead{fill:none;stroke:#1e3a8a;stroke-width:1.5;marker-start:url(#lead-dot);} .badge{fill:#1e3a8a;}
+      .badgeT{fill:#fff;font-size:17px;font-weight:700;text-anchor:middle;dominant-baseline:central;}
+      .callT{fill:#dbe4f5;font-size:18px;} .callTb{fill:#fff;font-size:18px;font-weight:700;} .ghost{fill:#6b7796;font-size:16px;} .title{fill:#fff;font-size:22px;font-weight:700;}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1760" height="820" fill="#0b0f1a"/>
+  <text x="200" y="38" class="title">Options / Settings (tabs + options + desc) — 16:9</text>
+  <rect x="200" y="50" width="1280" height="720" rx="10" class="frame"/>
+  <rect x="230" y="90" width="1050" height="44" rx="6" class="zone"/><text x="250" y="119" class="ghost">Tabs: Gameplay·Display·Audio·UI/Access·Controls</text>
+  <rect x="230" y="160" width="560" height="500" rx="8" class="zone"/><text x="250" y="152" class="ghost">Option list</text>
+  <rect x="830" y="160" width="450" height="360" rx="8" class="zone"/><text x="850" y="152" class="ghost">Description panel</text>
+  <g id="c1"><rect x="230" y="90" width="1050" height="44" rx="6" class="region"/><polyline class="lead" points="230,112 150,112 150,110 60,110"/><g transform="translate(252,112)"><circle r="15" class="badge"/><text class="badgeT">1</text></g><g transform="translate(10,110)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">1</text><text x="34" y="0" class="callTb" dominant-baseline="central">Tab row</text><text x="34" y="20" class="callT" dominant-baseline="central">top · categories</text></g></g>
+  <g id="c2"><rect x="230" y="160" width="560" height="500" rx="8" class="region"/><polyline class="lead" points="230,310 150,310 150,300 60,300"/><g transform="translate(252,182)"><circle r="15" class="badge"/><text class="badgeT">2</text></g><g transform="translate(10,300)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">2</text><text x="34" y="0" class="callTb" dominant-baseline="central">Option list</text><text x="34" y="20" class="callT" dominant-baseline="central">sliders·toggles</text></g></g>
+  <g id="c3"><rect x="260" y="260" width="480" height="40" rx="6" class="region"/><polyline class="lead" points="260,280 158,280 158,210 60,210"/><g transform="translate(282,280)"><circle r="15" class="badge"/><text class="badgeT">3</text></g><g transform="translate(10,210)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">3</text><text x="34" y="0" class="callTb" dominant-baseline="central">Option control</text><text x="34" y="20" class="callT" dominant-baseline="central">slider/toggle</text></g></g>
+  <g id="c5"><rect x="260" y="480" width="480" height="140" rx="6" class="region"/><polyline class="lead" points="260,550 150,550 150,620 60,620"/><g transform="translate(282,500)"><circle r="15" class="badge"/><text class="badgeT">5</text></g><g transform="translate(10,620)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">5</text><text x="34" y="0" class="callTb" dominant-baseline="central">Accessibility group</text><text x="34" y="20" class="callT" dominant-baseline="central">colorblind·shake·subs</text></g></g>
+  <g id="c4"><rect x="830" y="160" width="450" height="360" rx="8" class="region"/><polyline class="lead" points="1280,330 1490,330 1490,300 1530,300"/><g transform="translate(855,182)"><circle r="15" class="badge"/><text class="badgeT">4</text></g><g transform="translate(1490,300)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">4</text><text x="34" y="0" class="callTb" dominant-baseline="central">Description panel</text><text x="34" y="20" class="callT" dominant-baseline="central">right · explain</text></g></g>
+  <g id="c6"><rect x="830" y="690" width="450" height="44" rx="6" class="region"/><polyline class="lead" points="1280,712 1490,712 1490,700 1530,700"/><g transform="translate(855,712)"><circle r="15" class="badge"/><text class="badgeT">6</text></g><g transform="translate(1490,700)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">6</text><text x="34" y="0" class="callTb" dominant-baseline="central">Apply·revert·back</text><text x="34" y="20" class="callT" dominant-baseline="central">bottom · input</text></g></g>
+</svg>

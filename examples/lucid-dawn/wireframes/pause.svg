@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 820" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="lead-dot" markerWidth="8" markerHeight="8" refX="4" refY="4"><circle cx="4" cy="4" r="3" fill="#1e3a8a"/></marker>
+    <style>
+      .frame{fill:#0f1422;stroke:#3b4a6b;stroke-width:2;} .zone{fill:#1a2336;stroke:#2c3a57;stroke-width:1;} .dim{fill:#070a12;opacity:0.55;}
+      .item{fill:#16203a;stroke:#33507f;stroke-width:1.5;} .itemSel{fill:#1e3357;stroke:#7aa2e8;stroke-width:2.5;}
+      .region{fill:none;stroke:#5b8def;stroke-width:2;stroke-dasharray:6 4;}
+      .lead{fill:none;stroke:#1e3a8a;stroke-width:1.5;marker-start:url(#lead-dot);} .badge{fill:#1e3a8a;}
+      .badgeT{fill:#fff;font-size:17px;font-weight:700;text-anchor:middle;dominant-baseline:central;}
+      .callT{fill:#dbe4f5;font-size:18px;} .callTb{fill:#fff;font-size:18px;font-weight:700;} .ghost{fill:#6b7796;font-size:16px;} .title{fill:#fff;font-size:22px;font-weight:700;}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1760" height="820" fill="#0b0f1a"/>
+  <text x="200" y="38" class="title">Pause Menu — 16:9</text>
+  <rect x="200" y="50" width="1280" height="720" rx="10" class="frame"/>
+  <rect x="205" y="55" width="1270" height="710" rx="8" class="dim"/>
+  <rect x="680" y="260" width="400" height="280" rx="8" class="zone"/>
+  <rect x="700" y="300" width="360" height="44" rx="6" class="itemSel"/><rect x="700" y="356" width="360" height="44" rx="6" class="item"/><rect x="700" y="412" width="360" height="44" rx="6" class="item"/><rect x="700" y="468" width="360" height="44" rx="6" class="item"/><text x="700" y="252" class="ghost">Center menu</text>
+  <g id="c1"><rect x="205" y="55" width="1270" height="710" rx="8" class="region"/><polyline class="lead" points="210,60 150,60 150,90 60,90"/><g transform="translate(228,74)"><circle r="15" class="badge"/><text class="badgeT">1</text></g><g transform="translate(10,90)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">1</text><text x="34" y="0" class="callTb" dominant-baseline="central">Pause dim</text><text x="34" y="20" class="callT" dominant-baseline="central">combat frozen</text></g></g>
+  <g id="c4"><rect x="230" y="160" width="300" height="90" rx="6" class="region"/><polyline class="lead" points="230,205 150,205 150,300 60,300"/><g transform="translate(252,182)"><circle r="15" class="badge"/><text class="badgeT">4</text></g><g transform="translate(10,300)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">4</text><text x="34" y="0" class="callTb" dominant-baseline="central">Run summary</text><text x="34" y="20" class="callT" dominant-baseline="central">time·purify·seal</text></g></g>
+  <g id="c3"><rect x="700" y="300" width="360" height="44" rx="6" class="region"/><polyline class="lead" points="1060,322 1485,322 1485,250 1530,250"/><g transform="translate(722,322)"><circle r="15" class="badge"/><text class="badgeT">3</text></g><g transform="translate(1490,250)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">3</text><text x="34" y="0" class="callTb" dominant-baseline="central">Select highlight</text><text x="34" y="20" class="callT" dominant-baseline="central">focus</text></g></g>
+  <g id="c2"><rect x="680" y="260" width="400" height="280" rx="8" class="region"/><polyline class="lead" points="1080,400 1490,400 1490,300 1530,300"/><g transform="translate(705,282)"><circle r="15" class="badge"/><text class="badgeT">2</text></g><g transform="translate(1490,300)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">2</text><text x="34" y="0" class="callTb" dominant-baseline="central">Menu list</text><text x="34" y="20" class="callT" dominant-baseline="central">resume/settings/main…</text></g></g>
+  <g id="c5"><rect x="680" y="690" width="400" height="40" rx="6" class="region"/><polyline class="lead" points="1080,710 1490,710 1490,700 1530,700"/><g transform="translate(705,710)"><circle r="15" class="badge"/><text class="badgeT">5</text></g><g transform="translate(1490,700)"><circle cx="14" cy="0" r="13" class="badge"/><text x="14" y="0" class="badgeT">5</text><text x="34" y="0" class="callTb" dominant-baseline="central">Input prompt</text><text x="34" y="20" class="callT" dominant-baseline="central">bottom</text></g></g>
+</svg>
