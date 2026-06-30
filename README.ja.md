@@ -28,23 +28,56 @@
 
 完全な実例が **[`examples/lucid-dawn/`](examples/lucid-dawn/)** にある —— survivor-like/ローグライト
 （*Lucid Dawn: Dream Survivor*）の完全な UX/UI 仕様書で、`ui-ref` で収集したリファレンスをもとに
-`game-ui-spec` スキルが生成した。**12 画面**（ゲーム外+ゲーム内）、**注釈付きワイヤーフレーム 13 点**、
-デザイントークン、意思決定トラッカー、エンジンバインディング・ユーザビリティテストの付録 ——
-**英語 / 中文 / 한국어 / 日本語** を提供。
+`game-ui-spec` スキルが生成した。**12 画面**（ゲーム外+ゲーム内）・**注釈付きワイヤーフレーム 13 点**、英語・中国語・韓国語・日本語で提供。
 
-| 注釈付きワイヤーフレーム (HUD) | 注釈付きワイヤーフレーム (レベルアップ) | 仕様書 (レンダリング) |
-| --- | --- | --- |
-| ![HUD wireframe](docs/captures/hud.png) | ![Level-up wireframe](docs/captures/levelup.png) | ![Spec cover](docs/captures/spec-cover.png) |
+**注釈付きワイヤーフレーム** —— すべての UI 要素に番号、領域を矩形/円で、引き出し線をフレームの *外* のガターのラベルへ:
 
-| ボス報酬 (スキルツリー) | リザルト (3 分岐) | キャラクター選択 |
-| --- | --- | --- |
-| ![Skill tree](docs/captures/skilltree.png) | ![Result](docs/captures/results.png) | ![Character select](docs/captures/character-select.png) |
+<img src="docs/captures/hud.png" alt="ゲーム内 HUD の注釈付きワイヤーフレーム" width="900">
 
-すべての UI 要素に番号を振り、領域を矩形/円で示し、引き出し線をフレームの **外** のガター上のラベルへ伸ばし、
-その下に凡例+状態マトリクス+データバインディングを付ける。仕様書を見る:
-[EN](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
-[中文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
-[한국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
+### 仕様書はどこまで書かれている？
+
+各ワイヤーフレームの下に、**12 画面すべて** が次を備える:
+
+- **目的**（進入 / 退出 / 入力コンテキスト / 優先度）
+- **参考** —— 借用した実際のゲーム UI を「何を / なぜ」のメモ付きで本文にインライン埋め込み
+- **ワイヤーフレーム**（SVG）+ **凡例** —— 要素ごとに: 位置 · 表示条件 · 挙動/状態 · **データバインディング** · **測定可能な判定基準** · 平易な UX 意図 · アクセシビリティ
+- **状態マトリクス** —— default / hover / pressed / selected / disabled-locked / loading / empty / error
+- **入力パリティ** —— マウス · キーボード · ゲームパッド · スクリーンリーダー
+- **データバインディング** —— すべてのフィールド/イベントを **GDD と照合検証**；GDD に無いものは「GDD への追加が必要」と明示（勝手に捏造しない）
+- **ナビゲーション · エッジケース · アクセシビリティ · UX 設計意図（平易な言葉）· 未解決の質問 · 受入チェックリスト**
+
+さらに付随ドキュメント: **デザイントークン**（色 hex / 書体 / モーション / USS 変数）、**数値・意思決定トラッカー**
+（各数値を GDD 確定 / 標準 / 推定 で分類）、そして **エンジンバインディング（UI Toolkit × DOTS）** ·
+**ユーザビリティテスト計画** の付録。
+
+<details>
+<summary><b>実際の抜粋を見る —— ゲーム内 HUD の凡例 + 状態マトリクス</b></summary>
+
+凡例（9 行のうち抜粋）:
+
+| # | コード | 要素 | 位置 | データバインディング | 判定基準 | アクセシビリティ |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 | A2 | アラーム時計 | 左上 | `run.timer` 0–1200s (§4-1), `AlarmReached` (§12-1) | いつでも残り時間を ≤1s で読める | 時計+数字、最後の 60 秒は 音+明るさ |
+| 4 | A4 | HP / シールド | 左上 | `Character.hp` (§12-2), シールド (§12-2 追加) | 被弾 ≤100ms 反映；低 HP は 色+点滅+枠 | 色+点滅+枠+数値 |
+| 7 | A7 | 浄化バー | 下部中央 | 浄化 (§4-2), `PurgeGained` · `BossThresholdReached` (§12-1) | 獲得 ≤200ms 反映；閾値 → ボス警告 | 充填+数値+ソースのトースト |
+
+状態マトリクス（抜粋）:
+
+| 要素 | default | pressed/active | disabled/locked | error |
+| --- | --- | --- | --- | --- |
+| スキル (A8) | リング充填 | 押下 + SFX、リング 0 | グレー + 錠 + 「未解放」 | 「CD エラー —— 既定値」 |
+| 必殺 (A9) | チャージ充填 | 発動カットシーン | <100 なら淡色 + 残量 | 直前値 + 警告枠 |
+
+</details>
+
+**その他の画面** —— 全点は [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/):
+
+<img src="docs/captures/levelup.png" alt="レベルアップ/アイテム選択" width="440"> <img src="docs/captures/results.png" alt="リザルト画面" width="440">
+<img src="docs/captures/skilltree.png" alt="ボス報酬スキルツリー" width="440"> <img src="docs/captures/character-select.png" alt="キャラクター選択" width="440">
+
+仕様書の全文を読む: [英語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
+[中国語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
+[韓国語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
 [日本語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
 [PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf)。
 

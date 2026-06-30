@@ -26,23 +26,56 @@
 
 一个完整的实战示例位于 **[`examples/lucid-dawn/`](examples/lucid-dawn/)** —— 一款 survivor-like/roguelite
 （*Lucid Dawn: Dream Survivor*）的完整 UX/UI 规格书，由 `game-ui-spec` 技能基于 `ui-ref` 收集的参考生成。
-**12 个界面**（游戏外+游戏内）、**13 张带标注线框图**、设计令牌、决策追踪表、引擎绑定与可用性测试附录 ——
-提供 **英文 / 中文 / 한국어** 三个版本。
+涵盖 **12 个界面**（游戏外+游戏内）、**13 张带标注线框图**，提供英文、中文、韩文、日文四个版本。
 
-| 带标注线框图（HUD） | 带标注线框图（升级） | 规格书（渲染） |
-| --- | --- | --- |
-| ![HUD wireframe](docs/captures/hud.png) | ![Level-up wireframe](docs/captures/levelup.png) | ![Spec cover](docs/captures/spec-cover.png) |
+**带标注线框图** —— 每个 UI 元素都编号，区域以方框/圆圈标注，引线拉到画面 *之外* 的侧栏标签：
 
-| Boss 奖励（技能树） | 结算（3 分支） | 角色选择 |
-| --- | --- | --- |
-| ![Skill tree](docs/captures/skilltree.png) | ![Result](docs/captures/results.png) | ![Character select](docs/captures/character-select.png) |
+<img src="docs/captures/hud.png" alt="游戏内 HUD 标注线框图" width="900">
 
-每个 UI 元素都编号，区域以方框/圆圈标注，引线拉到画面**之外**的侧栏标签，下方配有完整的图例+状态矩阵+
-数据绑定。查看规格书：
-[EN](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
+### 规格书有多详细？
+
+每张线框图下方，**12 个界面中的每一个** 都包含：
+
+- **目的**（进入 / 退出 / 输入语境 / 优先级）
+- **参考** —— 借鉴的真实游戏 UI，连同「是什么 / 为什么」备注内联嵌入
+- **线框图**（SVG）+ **图例** —— 逐元素：位置 · 显示条件 · 行为/状态 · **数据绑定** · **可度量的判定标准** · 通俗的 UX 意图 · 无障碍
+- **状态矩阵** —— default / hover / pressed / selected / disabled-locked / loading / empty / error
+- **输入对等** —— 鼠标 · 键盘 · 手柄 · 屏幕阅读器
+- **数据绑定** —— 每个字段/事件都 **对照 GDD 校验**；GDD 中没有的标记为「需补充进 GDD」（绝不擅自杜撰）
+- **导航 · 边界情况 · 无障碍 · UX 设计意图（通俗语言）· 待定问题 · 验收清单**
+
+外加配套文档：**设计令牌**（颜色 hex / 字体 / 动效 / USS 变量）、**数值与决策追踪表**（每个数值标注为
+GDD 锁定 / 标准 / 估算），以及 **引擎绑定（UI Toolkit × DOTS）** 与 **可用性测试计划** 附录。
+
+<details>
+<summary><b>查看真实节选 —— 游戏内 HUD 图例 + 状态矩阵</b></summary>
+
+图例（9 行节选）：
+
+| # | 代码 | 元素 | 位置 | 数据绑定 | 判定标准 | 无障碍 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 | A2 | 闹钟 | 左上 | `run.timer` 0–1200s (§4-1), `AlarmReached` (§12-1) | 任意时刻 ≤1s 读出剩余时间 | 钟面+数字，最后 60 秒 声音+变亮 |
+| 4 | A4 | HP / 护盾 | 左上 | `Character.hp` (§12-2), 护盾 (§12-2 补充) | 受击 ≤100ms 反映；低血用 颜色+闪烁+边框 | 颜色+闪烁+边框+数值 |
+| 7 | A7 | 净化条 | 底部居中 | 净化 (§4-2), `PurgeGained` · `BossThresholdReached` (§12-1) | 获取 ≤200ms 反映；达阈值 → Boss 预警 | 填充+数值+来源浮字 |
+
+状态矩阵（节选）：
+
+| 元素 | default | pressed/active | disabled/locked | error |
+| --- | --- | --- | --- | --- |
+| 技能 (A8) | 环形填充 | 按下 + 音效，环形归 0 | 灰 + 锁 + “尚未解锁” | “冷却出错 —— 默认值” |
+| 终极 (A9) | 充能填充 | 释放过场 | <100 则变暗 + 剩余量 | 上次值 + 警告边框 |
+
+</details>
+
+**更多界面** —— 全部见 [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/)：
+
+<img src="docs/captures/levelup.png" alt="升级/选物" width="440"> <img src="docs/captures/results.png" alt="结算界面" width="440">
+<img src="docs/captures/skilltree.png" alt="Boss 奖励技能树" width="440"> <img src="docs/captures/character-select.png" alt="角色选择" width="440">
+
+查看完整规格书：[英文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
 [中文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
-[한국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
-[日本語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
+[韩文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
+[日文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
 [PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf)。
 
 ## 安装
@@ -98,7 +131,7 @@ ui-ref scan-local
 - Markdown 源渲染为 **宽屏 16:9 横向 PDF**（`build_pdf.py` + `spec-pdf.css`），让密集表格便于分享。
 
 完整生成示例见 **[`examples/lucid-dawn/`](examples/lucid-dawn/)**（12 界面、13 张线框图、令牌、追踪表、
-英/中/韩）以及上方的[成果示例](#成果示例)截图。
+英/中/韩/日）以及上方的[成果示例](#成果示例)截图。
 
 要在你的游戏项目中使用，把技能文件夹复制到该项目的 `.claude/skills/`（或复制到 `~/.claude/skills/`
 以对所有项目生效），然后让 Claude Code “画出〈某界面〉的 UX/UI 规格书”。

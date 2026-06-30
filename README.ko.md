@@ -28,23 +28,56 @@
 
 완성된 실제 예시가 **[`examples/lucid-dawn/`](examples/lucid-dawn/)** 에 있다 — survivor-like/로그라이트
 (*Lucid Dawn: Dream Survivor*)의 완전한 UX/UI 기획서로, `ui-ref`로 수집한 레퍼런스를 바탕으로
-`game-ui-spec` 스킬이 생성했다. **12개 화면**(아웃게임+인게임), **주석형 와이어프레임 13종**,
-디자인 토큰, 수치/결정 트래커, 엔진 바인딩·사용성 테스트 부록 — **영문 / 中文 / 한국어** 제공.
+`game-ui-spec` 스킬이 생성했다. **12개 화면**(아웃게임+인게임)·**주석형 와이어프레임 13종**, 영어·중국어·한국어·일본어 제공.
 
-| 주석형 와이어프레임 (HUD) | 주석형 와이어프레임 (레벨업) | 기획서 (렌더) |
-| --- | --- | --- |
-| ![HUD wireframe](docs/captures/hud.png) | ![Level-up wireframe](docs/captures/levelup.png) | ![Spec cover](docs/captures/spec-cover.png) |
+**주석형 와이어프레임** — 모든 UI 요소에 번호, 영역을 네모/동그라미로, 리더 라인을 프레임 *밖* 거터 라벨로:
 
-| 보스 보상 (스킬트리) | 결과 (분기 3종) | 캐릭터 선택 |
-| --- | --- | --- |
-| ![Skill tree](docs/captures/skilltree.png) | ![Result](docs/captures/results.png) | ![Character select](docs/captures/character-select.png) |
+<img src="docs/captures/hud.png" alt="인게임 HUD 주석 와이어프레임" width="900">
 
-모든 UI 요소가 번호로 표시되고, 영역을 네모/동그라미로 표시하며, 리더 라인을 프레임 **밖** 거터의
-라벨로 뽑고, 그 아래에 범례+상태 매트릭스+데이터 바인딩이 붙는다. 기획서 보기:
-[EN](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
-[中文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
+### 기획서는 얼마나 자세한가?
+
+각 와이어프레임 아래에, **12개 화면 모두** 다음을 갖춘다:
+
+- **목적** (진입 / 이탈 / 입력 컨텍스트 / 우선순위)
+- **참조** — 차용한 실제 게임 UI를 "무엇을 / 왜" 메모와 함께 본문에 인라인 임베드
+- **와이어프레임**(SVG) + **범례** — 요소별: 위치 · 표시 조건 · 동작/상태 · **데이터 바인딩** · **측정 가능한 동작 기준** · 평이한 UX 의도 · 접근성
+- **상태 매트릭스** — default / hover / pressed / selected / disabled-locked / loading / empty / error
+- **입력 패리티** — 마우스 · 키보드 · 게임패드 · 스크린리더
+- **데이터 바인딩** — 모든 필드/이벤트를 **GDD와 대조 검증**; GDD에 없는 건 "GDD 추가 필요"로 표시(임의 발명 금지)
+- **내비게이션 · 엣지 케이스 · 접근성 · UX 설계 의도(평이체) · 미해결 질문 · 수용 기준 체크리스트**
+
+여기에 동반 문서: **디자인 토큰**(색 hex / 타이포 / 모션 / USS 변수), **수치·결정 트래커**(모든 수치를
+GDD확정 / 표준 / 추정으로 분류), 그리고 **엔진 바인딩(UI Toolkit × DOTS)** · **사용성 테스트 플랜** 부록.
+
+<details>
+<summary><b>실제 발췌 보기 — 인게임 HUD 범례 + 상태 매트릭스</b></summary>
+
+범례(9행 중 발췌):
+
+| # | 코드 | 요소 | 위치 | 데이터 바인딩 | 동작 기준 | 접근성 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 | A2 | 알람 시계 | 좌상단 | `run.timer` 0–1200s (§4-1), `AlarmReached` (§12-1) | 어느 순간에도 남은 시간 1초 내 인지 | 시계+숫자, 최종 60초 소리+밝기 |
+| 4 | A4 | HP / 실드 | 좌상단 | `Character.hp` (§12-2), 실드 (§12-2 추가) | 피격 100ms 내 반영; 저HP는 색+점멸+테두리 | 색+점멸+테두리+수치 |
+| 7 | A7 | 정화도 바 | 하단 중앙 | 정화도 (§4-2), `PurgeGained` · `BossThresholdReached` (§12-1) | 획득 200ms 내; 임계치 → 보스 경고 | 채움+수치+소스 토스트 |
+
+상태 매트릭스(발췌):
+
+| 요소 | default | pressed/active | disabled/locked | error |
+| --- | --- | --- | --- | --- |
+| 스킬 (A8) | 라디얼 채움 | 눌림 + SFX, 라디얼 0 | 회색 + 자물쇠 + "미해금" | "쿨다운 오류 — 기본값" |
+| 궁극기 (A9) | 충전 채움 | 발동 시네마틱 | <100이면 흐림 + 남은량 | 마지막값 + 경고 테두리 |
+
+</details>
+
+**더 많은 화면** — 전체는 [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/):
+
+<img src="docs/captures/levelup.png" alt="레벨업/아이템 선택" width="440"> <img src="docs/captures/results.png" alt="결과 화면" width="440">
+<img src="docs/captures/skilltree.png" alt="보스 보상 스킬트리" width="440"> <img src="docs/captures/character-select.png" alt="캐릭터 선택" width="440">
+
+기획서 전문 보기: [영어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
+[중국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
 [한국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
-[日本語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
+[일본어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
 [PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf).
 
 ## 설치
@@ -101,7 +134,7 @@ GDD나 기능 브리프가 주어지면 다음을 갖춘 기획서를 만든다:
 - 마크다운 원본을 **16:9 가로 PDF**(`build_pdf.py` + `spec-pdf.css`)로 렌더해 빽빽한 표도 공유하기 좋게.
 
 전체 생성 샘플은 **[`examples/lucid-dawn/`](examples/lucid-dawn/)**(12화면, 와이어프레임 13종, 토큰,
-트래커, 영/중/한)과 위 [결과물 샘플](#결과물-샘플) 캡처를 참고.
+트래커; 영어·중국어·한국어·일본어)과 위 [결과물 샘플](#결과물-샘플) 캡처를 참고.
 
 내 게임 프로젝트에서 쓰려면 스킬 폴더를 그 프로젝트의 `.claude/skills/`(또는 모든 프로젝트용으로
 `~/.claude/skills/`)에 복사한 뒤, Claude Code에 "〈화면〉의 UX/UI 기획서 뽑아줘"라고 요청하면 된다.
