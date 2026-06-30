@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Render a UX/UI 기획서 (markdown) to a wide landscape PDF (+ HTML).
+"""Render a UX/UI 디자인 문서 (markdown) to a wide landscape PDF (+ HTML).
 
 Markdown stays the editable source; this produces the shareable deliverable in the
 format design teams expect (16:9 landscape, wide tables that don't wrap to mush).
 
     pip install markdown
-    python build_pdf.py spec.md                 # -> spec.html + spec.pdf next to it
-    python build_pdf.py spec.md --css spec-pdf.css --out out/spec.pdf
+    python build_pdf.py design.md                 # -> design.html + design.pdf next to it
+    python build_pdf.py design.md --css design-pdf.css --out out/design.pdf
 
 Needs a headless Chrome or Edge (ships with Windows). The HTML is written next to the
 source so relative image/SVG paths (wireframes/*.svg, references/ui/*.jpg) resolve.
@@ -48,6 +48,7 @@ def _rewrite_paths(html, reldir):
 
 def build(md_path, css_path, out_pdf, appends=None):
     md_path = os.path.abspath(md_path)
+    out_pdf = os.path.abspath(out_pdf)
     src_dir = os.path.dirname(md_path)
     title = os.path.splitext(os.path.basename(md_path))[0]
     css = open(css_path, encoding='utf-8').read() if css_path and os.path.exists(css_path) else ""
@@ -70,6 +71,8 @@ def build(md_path, css_path, out_pdf, appends=None):
     if not chrome:
         print("No Chrome/Edge found — HTML written; open it and Print-to-PDF (landscape) manually.")
         return html_path, None
+    if os.path.exists(out_pdf):
+        os.remove(out_pdf)
     cmd = [chrome, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
            f"--print-to-pdf={out_pdf}", "file:///" + html_path.replace('\\', '/')]
     subprocess.run(cmd, check=False, capture_output=True)
@@ -82,7 +85,7 @@ def build(md_path, css_path, out_pdf, appends=None):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("md")
-    ap.add_argument("--css", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "spec-pdf.css"))
+    ap.add_argument("--css", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "design-pdf.css"))
     ap.add_argument("--out", default=None)
     ap.add_argument("--append", action="append", default=[],
                     help="Extra markdown to append as an appendix (e.g. reference pages); repeatable.")

@@ -1,8 +1,8 @@
 # Lucid Dawn — Design Tokens (UI design system v0.1)
 
-> Brings the wireframes/components of `lucid_dawn_ui_ux_spec.*.md` down to **implementable visual tokens**.
+> Brings the wireframes/components of `lucid_dawn_ui_ux_design.*.md` down to **implementable visual tokens**.
 > Colors (hex) / type / spacing / radius / motion all map 1:1 to **Unity 6 UI Toolkit USS variables** (`--ld-*`).
-> Shared across the EN / 中文 / 한글 spec versions. Status: draft; `[TBD]` = pending art lock.
+> Shared across the EN / 中文 / 한글 design versions. Status: draft; `[TBD]` = pending art lock.
 > **Rule: color never carries meaning alone (P6)** — every color token ships with an icon/shape/position/label. Colorblind palette in §7.
 
 ## 1. Color — surfaces / text
@@ -84,7 +84,7 @@ Sizes (px): `timer 40 · h1 32 · h2 24 · body 16 · sub 14 · cap 12` (no smal
 | colorblind (deuter/prot/trit) | enemy bullet = `danger` + spike shape; ally = `lucid` + round; hazard zone = hatch pattern — **shape first** |
 | state | color + (icon/shape + text) always |
 
-## 8. Component tokens (spec §4 inventory → values)
+## 8. Component tokens (design document §4 inventory → values)
 | component | mapping |
 | --- | --- |
 | C-BAR | height 16–22px, `radius.sm`, per-type color (§2)+icon; danger = `color.hp`+blink(`motion.quick`)+border |

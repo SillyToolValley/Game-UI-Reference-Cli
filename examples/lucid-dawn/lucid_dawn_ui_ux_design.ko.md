@@ -1,6 +1,6 @@
-# Lucid Dawn: Dream Survivor — 전체 UI/UX 기획서 (아웃게임 + 인게임)
+# Lucid Dawn: Dream Survivor — 전체 UI/UX 디자인 문서 (아웃게임 + 인게임)
 
-> **주석형 와이어프레임 기획서.** 각 화면은 ① 참고한 실제 게임 UI(`ui-ref`로 웹 수집, 인라인 임베드),
+> **주석형 와이어프레임 디자인 문서.** 각 화면은 ① 참고한 실제 게임 UI(`ui-ref`로 웹 수집, 인라인 임베드),
 > ② 그로부터 파생한 와이어프레임(`wireframes/*.svg`), ③ 번호가 매겨진 범례(모든 요소를 박스/원으로 표시하고
 > 리더선을 프레임 밖으로 빼서 설명에 연결), ④ 상태 매트릭스 · 입력 동등성 · 데이터 바인딩, ⑤ 쉬운 말로 쓴
 > **UX 설계 의도**로 구성된다. 편집 원본 = 이 `.md`, 공유본 = 와이드 16:9 PDF/DOCX(부록 C). 동반 문서:
@@ -18,7 +18,7 @@
 
 | field | value |
 | --- | --- |
-| Document | Lucid Dawn: Dream Survivor — 전체 UI/UX 기획서 (아웃게임 + 인게임) |
+| Document | Lucid Dawn: Dream Survivor — 전체 UI/UX 디자인 문서 (아웃게임 + 인게임) |
 | Game / build | Lucid Dawn: Dream Survivor / Vertical Slice (v0.8 범위, v0.9 GDD) |
 | Version / date / author | v1.0 (한국어, EN 마스터 기반) / 2026-06-30 / UX |
 | Status | draft |
@@ -1243,7 +1243,7 @@ FailedWake 메타 보상 비율. 리더보드 축 노출.
 | 라이선스/공식 혼동 (#1) | O1, O2 | 캐릭터 이름/표기 라이선스 영역 — **레이아웃만, 법무 별도** | 표기 가이드라인 검토 |
 | 코옵 시간 정지가 타인 방해 (#6) | (범위 밖) | VS 미구현; 코옵 빌드에서 플레이어별/팀/합동 효과 분리 | — (UX 범위 밖) |
 
-> #1과 #6은 일부 UX 밖(법무 / 코옵 빌드)이며 그렇게 표시됨. 나머지는 이 기획서의 레이아웃/상태/피드백 규칙으로 처리.
+> #1과 #6은 일부 UX 밖(법무 / 코옵 빌드)이며 그렇게 표시됨. 나머지는 이 디자인 문서의 레이아웃/상태/피드백 규칙으로 처리.
 
 ## 7. Open questions (종합)
 | # | 화면 | 질문 |
@@ -1267,7 +1267,7 @@ FailedWake 메타 보상 비율. 리더보드 축 노출.
 ## 8. 버전 이력
 | version | date | change |
 | --- | --- | --- |
-| v1.0 (EN master) | 2026-06-30 | 전체 아웃게임(O1–O6)+인게임(I1–I6) 주석형 와이어프레임 기획서, 웹 수집 참고(interfaceingame, 8개 게임), 디자인 토큰 + 결정 추적기, 엔진 바인딩(부록 D), 사용성 테스트 계획(부록 E). 13개 와이어프레임 린트+렌더 통과. 한국어/중국어 버전은 이 마스터에서 파생. |
+| v1.0 (EN master) | 2026-06-30 | 전체 아웃게임(O1–O6)+인게임(I1–I6) 주석형 와이어프레임 디자인 문서, 웹 수집 참고(interfaceingame, 8개 게임), 디자인 토큰 + 결정 추적기, 엔진 바인딩(부록 D), 사용성 테스트 계획(부록 E). 13개 와이어프레임 린트+렌더 통과. 한국어/중국어 버전은 이 마스터에서 파생. |
 
 ## 부록 A. 방법론 (근거)
 UX rationale 섹션은 아래 프레임워크로 추론하되 본문에서는 이름을 절대 언급하지 않는다(쉬운 말 규칙).
@@ -1311,8 +1311,8 @@ ui-ref scan-local
 ## 부록 C. 빌드 (공유본) + 와이어프레임 검증
 ```bash
 pip install markdown python-docx
-python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_spec.en.md --css <skill>/templates/spec-pdf.css
-python <skill>/templates/build_docx.py lucid_dawn_ui_ux_spec.en.md   # render wireframes/*.png first
+python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_design.en.md --css <skill>/templates/design-pdf.css
+python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render wireframes/*.png first
 ```
 13개 와이어프레임 모두 `validate_wireframe.py`(XML, 배경 rect, 콜아웃 ≤10, 배지 2회, 리더선 ≤4pt 비교차, 거터 ≤6/측면, 캔버스 밖 없음) + 헤드리스-Chrome 렌더 눈검사 통과. flow.svg는 와이어플로우(콜아웃 린터 면제).
 

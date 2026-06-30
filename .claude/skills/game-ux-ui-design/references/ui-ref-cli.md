@@ -1,10 +1,10 @@
 # Reference harvesting with `ui-ref` (this repo's CLI)
 
-The spec's reference images are gathered with **this repo's `ui-ref` CLI** and then linked
-from the spec as **separate file links** (the user's hard requirement #1). Run this BEFORE
+The design document's reference images are gathered with **this repo's `ui-ref` CLI** and then linked
+from the design document as **separate file links** (the user's hard requirement #1). Run this BEFORE
 drawing wireframes — the wireframe is *derived from* the references.
 
-> If `ui-ref` is unavailable in the current environment, the skill still produces the spec —
+> If `ui-ref` is unavailable in the current environment, the skill still produces the design document —
 > it just notes that references must be gathered manually into the same
 > `references/ui/<collection>/<category>/` layout so the links resolve.
 
@@ -55,7 +55,7 @@ auto-pick `--mode images`; override with `--mode images` / `--gallery-class`.
 ## 3. Curate into `references/ui/<collection>/<category>/`
 Review the contact sheet, then **manually save the chosen images** into the local refs tree
 (the tool intentionally downloads only a few thumbnails — collected pages are citation
-context, not a redistributable asset pack). Use stable, descriptive filenames the spec links
+context, not a redistributable asset pack). Use stable, descriptive filenames the design document links
 to, e.g. `references/ui/survivor-like/hud/001_vampire_survivors_hud.png`.
 
 ## 4. Index the curated set
@@ -63,13 +63,13 @@ to, e.g. `references/ui/survivor-like/hud/001_vampire_survivors_hud.png`.
 ui-ref scan-local
 ```
 Writes `ui_research/manifests/local_ui_refs_manifest.{json,md}` — link the `.md` from the
-spec's appendix as the reference index.
+design document's appendix as the reference index.
 
 ## 5. Embed references INLINE in each screen's 참조 section (no separate files, no links)
 **Do NOT put references in separate files and link to them.** In the final deliverable (PDF /
 Word), a link to `references/hud.md` is **dead** — it opens nothing, and the recipient doesn't
 have that file. So embed the curated images + "무엇을/왜" notes **directly inside each screen's
-`#### 참조` subsection** in `spec.md`:
+`#### 참조` subsection** in `design.md`:
 ```markdown
 #### 참조 — 이 화면이 참고한 실제 게임 UI
 *출처: Game UI Database — Enemy Health & Damage (scrn=143).*
@@ -84,9 +84,9 @@ have that file. So embed the curated images + "무엇을/왜" notes **directly i
 
 > 추가 참고: Vampire Survivors / Dead Cells / RoR2. (전체 후보·절차: 부록 REFERENCE_BOARD)
 ```
-> Image paths are relative to `spec.md` (which sits at the project root), so use
+> Image paths are relative to `design.md` (which sits at the project root), so use
 > `references/ui/<collection>/<category>/x.jpg` — NOT `ui/...` and NOT `../`. The image
-> renders inline in the spec, the PDF, and the Word doc.
+> renders inline in the design document, the PDF, and the Word doc.
 
 Derive the wireframe FROM these references: callouts trace the layout decisions visible in the
 embedded shots, and the **UX 설계 의도** says which exemplar each decision follows (plainly). Keep
@@ -98,6 +98,6 @@ Put a **reference BOARD** in the appendix instead — a table per screen of exem
 source URL + intended local path + the `ui-ref` command to fetch it later — and in each
 screen's `#### 참조` section, **state the intended image and describe the borrowed pattern
 in words** (no image yet) with a one-line note that images are pending harvest. Put a visible
-banner at the TOP of `spec.md` saying images aren't committed yet and where the recipe is.
+banner at the TOP of `design.md` saying images aren't committed yet and where the recipe is.
 Keep the intended paths exact so the moment you save real images, the inline `![]()` embeds
 resolve. Never word it as if images are attached when they aren't.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate an annotated-wireframe SVG against the game-ui-spec kit rules.
+"""Validate an annotated-wireframe SVG against the game-ux-ui-design kit rules.
 
 Dependency-free (stdlib only). Run on every wireframe before embedding:
 

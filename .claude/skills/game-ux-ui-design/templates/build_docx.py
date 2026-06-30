@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Render a UX/UI 기획서 (markdown) to an EDITABLE landscape Word doc (.docx).
+"""Render a UX/UI 디자인 문서 (markdown) to an EDITABLE landscape Word doc (.docx).
 
-For when meeting participants need to edit the spec themselves (Word / Google Docs),
+For when meeting participants need to edit the design document themselves (Word / Google Docs),
 not just read a PDF. Markdown stays the source; this is the editable share format.
 
     pip install python-docx
-    python build_docx.py spec.md                 # -> spec.docx next to it
-    python build_docx.py spec.md --append references/hud.md ... --out out/spec.docx
+    python build_docx.py design.md                 # -> design.docx next to it
+    python build_docx.py design.md --append references/hud.md ... --out out/design.docx
 
 Wireframes are embedded as their PNG renders (Word can't show SVG) — run build_pdf.py /
 your SVG render first so wireframes/*.png exist. Reference .jpg/.png embed directly.
-A line-based markdown reader handles the spec's headings / tables / images / lists /
+A line-based markdown reader handles the design's headings / tables / images / lists /
 blockquotes / fenced code; landscape 16:9 page; Korean-capable font.
 """
 import argparse, os, re, sys

@@ -35,19 +35,19 @@
 각 실행은 받은 썸네일이 제목·크기·**출처 링크**와 함께 인라인 렌더되는 **콘택트 시트**
 (`ui_research/manifests/contact_sheet_*.html`)와 **매니페스트**(`scan-local` →
 `local_ui_refs_manifest.{json,md}`)도 쓴다. 이렇게 모은 레퍼런스가 아래 와이어프레임의 **출처**이며,
-각 스펙 화면은 자기가 차용한 정확한 샷을 인용한다.
+각 디자인 화면은 자기가 차용한 정확한 샷을 인용한다.
 
 ## 결과물 샘플
 
 완성된 실제 예시가 **[`examples/lucid-dawn/`](examples/lucid-dawn/)** 에 있다 — survivor-like/로그라이트
-(*Lucid Dawn: Dream Survivor*)의 완전한 UX/UI 기획서로, `ui-ref`로 수집한 레퍼런스를 바탕으로
-`game-ui-spec` 스킬이 생성했다. **12개 화면**(아웃게임+인게임)·**주석형 와이어프레임 13종**, 영어·중국어·한국어·일본어 제공.
+(*Lucid Dawn: Dream Survivor*)의 완전한 UX/UI 디자인 문서로, `ui-ref`로 수집한 레퍼런스를 바탕으로
+`game-ux-ui-design` 스킬이 생성했다. **12개 화면**(아웃게임+인게임)·**주석형 와이어프레임 13종**, 영어·중국어·한국어·일본어 제공.
 
 **주석형 와이어프레임** — 모든 UI 요소에 번호, 영역을 네모/동그라미로, 리더 라인을 프레임 *밖* 거터 라벨로:
 
 <img src="docs/captures/hud.png" alt="인게임 HUD 주석 와이어프레임" width="900">
 
-### 기획서는 얼마나 자세한가?
+### 디자인 문서는 얼마나 자세한가?
 
 각 와이어프레임 아래에, **12개 화면 모두** 다음을 갖춘다:
 
@@ -82,21 +82,21 @@ GDD확정 / 표준 / 추정으로 분류), 그리고 **엔진 바인딩(UI Toolk
 
 </details>
 
-아래는 **실제 렌더된 스펙 페이지**다(인게임 HUD 화면 — 참조 스크린샷, 주석 와이어프레임, 10열 범례 표
+아래는 **실제 렌더된 디자인 페이지**다(인게임 HUD 화면 — 참조 스크린샷, 주석 와이어프레임, 10열 범례 표
 전체, 산출물 그대로):
 
-![스펙 페이지 샘플 — 인게임 HUD](docs/captures/spec-page-hud.png)
+![디자인 페이지 샘플 — 인게임 HUD](docs/captures/design-page-hud.png)
 
 **더 많은 화면** — 전체는 [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/):
 
 <img src="docs/captures/levelup.png" alt="레벨업/아이템 선택" width="440"> <img src="docs/captures/results.png" alt="결과 화면" width="440">
 <img src="docs/captures/skilltree.png" alt="보스 보상 스킬트리" width="440"> <img src="docs/captures/character-select.png" alt="캐릭터 선택" width="440">
 
-기획서 전문 보기: [영어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
-[중국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
-[한국어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
-[일본어](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
-[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf).
+디자인 문서 전문 보기: [영어](examples/lucid-dawn/lucid_dawn_ui_ux_design.en.md) ·
+[중국어](examples/lucid-dawn/lucid_dawn_ui_ux_design.zh.md) ·
+[한국어](examples/lucid-dawn/lucid_dawn_ui_ux_design.ko.md) ·
+[일본어](examples/lucid-dawn/lucid_dawn_ui_ux_design.ja.md) ·
+[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_design.en.pdf).
 
 ## 설치
 
@@ -134,28 +134,28 @@ ui-ref init --project-name "My Project"
 ui-ref scan-local
 ```
 
-## 동반 스킬: `game-ui-spec`
+## 동반 스킬: `game-ux-ui-design`
 
-이 repo는 여기서 모은 레퍼런스를 **모범적인 게임 UX/UI 기획서**로 바꿔주는 **Claude Code 스킬**을
+이 repo는 여기서 모은 레퍼런스를 **모범적인 게임 UX/UI 디자인 문서**로 바꿔주는 **Claude Code 스킬**을
 함께 제공한다 — survivor-like / 불릿헤븐 / 로그라이트 게임에 특화. 위치:
-[`.claude/skills/game-ui-spec/`](.claude/skills/game-ui-spec/).
+[`.claude/skills/game-ux-ui-design/`](.claude/skills/game-ux-ui-design/).
 
-GDD나 기능 브리프가 주어지면 다음을 갖춘 기획서를 만든다:
+GDD나 기능 브리프가 주어지면 다음을 갖춘 디자인 문서를 만든다:
 
 - **레퍼런스 이미지는 각 화면 본문에 인라인 임베드**(`ui-ref`로 수집);
 - **그 레퍼런스에서 도출한 와이어프레임** — **모든 UI 요소를 번호로**, 영역을 네모/동그라미로,
   **프레임 밖으로 뽑은 리더 라인**으로 설명(SVG 주석 콜아웃 키트 —
-  [`templates/wireframe-kit.svg`](.claude/skills/game-ui-spec/templates/wireframe-kit.svg));
+  [`templates/wireframe-kit.svg`](.claude/skills/game-ux-ui-design/templates/wireframe-kit.svg));
 - 각 화면에 **범례·상태 매트릭스·입력 패리티·데이터 바인딩** 표;
 - 화면마다 평이한 우리말 **〈UX 설계 의도〉**(게임 UX 휴리스틱으로 사고하되 본문엔 용어를 쓰지 않음);
 - **출하급 단계(선택)**: 디자인 토큰 · 수치/결정 트래커 · 엔진 바인딩 · 사용성 테스트 플랜;
-- 마크다운 원본을 **16:9 가로 PDF**(`build_pdf.py` + `spec-pdf.css`)로 렌더해 빽빽한 표도 공유하기 좋게.
+- 마크다운 원본을 **16:9 가로 PDF**(`build_pdf.py` + `design-pdf.css`)로 렌더해 빽빽한 표도 공유하기 좋게.
 
 전체 생성 샘플은 **[`examples/lucid-dawn/`](examples/lucid-dawn/)**(12화면, 와이어프레임 13종, 토큰,
 트래커; 영어·중국어·한국어·일본어)과 위 [결과물 샘플](#결과물-샘플) 캡처를 참고.
 
 내 게임 프로젝트에서 쓰려면 스킬 폴더를 그 프로젝트의 `.claude/skills/`(또는 모든 프로젝트용으로
-`~/.claude/skills/`)에 복사한 뒤, Claude Code에 "〈화면〉의 UX/UI 기획서 뽑아줘"라고 요청하면 된다.
+`~/.claude/skills/`)에 복사한 뒤, Claude Code에 "〈화면〉의 UX/UI 디자인 문서 뽑아줘"라고 요청하면 된다.
 
 ## 명령어
 

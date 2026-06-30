@@ -1,6 +1,6 @@
-# Lucid Dawn: Dream Survivor — Full UI/UX Spec (out-game + in-game)
+# Lucid Dawn: Dream Survivor — Full UI/UX Design (out-game + in-game)
 
-> **Annotated-wireframe spec.** Each screen has ① the real game UI it references (web-harvested with
+> **Annotated-wireframe design document.** Each screen has ① the real game UI it references (web-harvested with
 > `ui-ref`, embedded inline), ② a wireframe derived from it (`wireframes/*.svg`), ③ a numbered legend
 > (every element boxed/circled with a leader line pulled outside the frame), ④ state matrix · input
 > parity · data binding, ⑤ a plain-language **UX rationale**. Editable source = this `.md`; shareables =
@@ -19,7 +19,7 @@
 
 | field | value |
 | --- | --- |
-| Document | Lucid Dawn: Dream Survivor — Full UI/UX Spec (out-game + in-game) |
+| Document | Lucid Dawn: Dream Survivor — Full UI/UX Design (out-game + in-game) |
 | Game / build | Lucid Dawn: Dream Survivor / Vertical Slice (v0.8 scope, v0.9 GDD) |
 | Version / date / author | v1.0 (EN master) / 2026-06-30 / UX |
 | Status | draft |
@@ -108,7 +108,7 @@ Real game UI the wireframes draw from (web-harvested). **Actual images + notes a
 | C-PROMPT | input prompt | mouse·key·pad | auto glyph for current device (no memorization) | all bottom |
 | C-BADGE | status badge | rarity·ending·combo·new | color + **text label required** | I3·I4·I6 |
 
-## 5. Screen specs
+## 5. Screen designs
 
 > Order per screen: Purpose → References → Wireframe → Legend → State matrix → Input parity → Data binding → Navigation → Edge cases → Accessibility → UX rationale → Open questions → Acceptance. Out-game O1–O6, in-game I1–I6.
 
@@ -1244,7 +1244,7 @@ FailedWake meta reward ratio. Leaderboard axis exposure.
 | license/official confusion (#1) | O1, O2 | character-name/display license area — **layout only, legal separate** | display-guideline review |
 | co-op time-stop disturbing others (#6) | (out of scope) | unbuilt in VS; per-player/team/joint effect split at co-op build | — (out of UX scope) |
 
-> #1 and #6 are partly outside UX (legal / co-op build) and flagged as such. The rest are handled by this spec's layout/state/feedback rules.
+> #1 and #6 are partly outside UX (legal / co-op build) and flagged as such. The rest are handled by this design's layout/state/feedback rules.
 
 ## 7. Open questions (aggregate)
 | # | screen | question |
@@ -1268,7 +1268,7 @@ FailedWake meta reward ratio. Leaderboard axis exposure.
 ## 8. Version history
 | version | date | change |
 | --- | --- | --- |
-| v1.0 (EN master) | 2026-06-30 | Full out-game(O1–O6)+in-game(I1–I6) annotated-wireframe spec, web-harvested refs (interfaceingame, 8 games), design tokens + decision tracker, engine binding (App. D), usability test plan (App. E). 13 wireframes lint+render pass. Korean/Chinese versions derived from this master. |
+| v1.0 (EN master) | 2026-06-30 | Full out-game(O1–O6)+in-game(I1–I6) annotated-wireframe design document, web-harvested refs (interfaceingame, 8 games), design tokens + decision tracker, engine binding (App. D), usability test plan (App. E). 13 wireframes lint+render pass. Korean/Chinese versions derived from this master. |
 
 ## Appendix A. Methodology (rationale)
 The UX rationale sections reason with the frameworks below but never name them in the body (plain-language rule).
@@ -1312,8 +1312,8 @@ The harvested games are adjacent roguelites, so direct **bullet-heaven / survivo
 ## Appendix C. Build (shareables) + wireframe validation
 ```bash
 pip install markdown python-docx
-python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_spec.en.md --css <skill>/templates/spec-pdf.css
-python <skill>/templates/build_docx.py lucid_dawn_ui_ux_spec.en.md   # render wireframes/*.png first
+python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_design.en.md --css <skill>/templates/design-pdf.css
+python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render wireframes/*.png first
 ```
 All 13 wireframes pass `validate_wireframe.py` (XML, background rect, ≤10 callouts, badges twice, leaders ≤4 pts non-crossing, gutter ≤6/side, no off-canvas) + headless-Chrome render eyeball. flow.svg is a wireflow (exempt from the callout linter).
 

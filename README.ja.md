@@ -36,19 +36,19 @@
 各実行は、ダウンロードしたサムネイルがタイトル・サイズ・**ソースリンク** と共にインライン表示される
 閲覧可能な **コンタクトシート**（`ui_research/manifests/contact_sheet_*.html`）と、**マニフェスト**
 （`scan-local` → `local_ui_refs_manifest.{json,md}`）も書き出す。こうして集めたリファレンスが下の
-ワイヤーフレームの **出典** であり、各仕様画面は借用した具体的なショットを明記している。
+ワイヤーフレームの **出典** であり、各デザイン画面は借用した具体的なショットを明記している。
 
 ## 成果物サンプル
 
 完全な実例が **[`examples/lucid-dawn/`](examples/lucid-dawn/)** にある —— survivor-like/ローグライト
-（*Lucid Dawn: Dream Survivor*）の完全な UX/UI 仕様書で、`ui-ref` で収集したリファレンスをもとに
-`game-ui-spec` スキルが生成した。**12 画面**（ゲーム外+ゲーム内）・**注釈付きワイヤーフレーム 13 点**、英語・中国語・韓国語・日本語で提供。
+（*Lucid Dawn: Dream Survivor*）の完全な UX/UI デザインドキュメントで、`ui-ref` で収集したリファレンスをもとに
+`game-ux-ui-design` スキルが生成した。**12 画面**（ゲーム外+ゲーム内）・**注釈付きワイヤーフレーム 13 点**、英語・中国語・韓国語・日本語で提供。
 
 **注釈付きワイヤーフレーム** —— すべての UI 要素に番号、領域を矩形/円で、引き出し線をフレームの *外* のガターのラベルへ:
 
 <img src="docs/captures/hud.png" alt="ゲーム内 HUD の注釈付きワイヤーフレーム" width="900">
 
-### 仕様書はどこまで書かれている？
+### デザインドキュメントはどこまで書かれている？
 
 各ワイヤーフレームの下に、**12 画面すべて** が次を備える:
 
@@ -84,21 +84,21 @@
 
 </details>
 
-以下は **実際にレンダリングした仕様書のページ**（ゲーム内 HUD 画面 —— 参考スクショ、注釈付きワイヤー
+以下は **実際にレンダリングしたデザインドキュメントのページ**（ゲーム内 HUD 画面 —— 参考スクショ、注釈付きワイヤー
 フレーム、10 列の凡例表すべて、納品そのまま）:
 
-![仕様書ページのサンプル —— ゲーム内 HUD](docs/captures/spec-page-hud.png)
+![デザインドキュメントページのサンプル —— ゲーム内 HUD](docs/captures/design-page-hud.png)
 
 **その他の画面** —— 全点は [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/):
 
 <img src="docs/captures/levelup.png" alt="レベルアップ/アイテム選択" width="440"> <img src="docs/captures/results.png" alt="リザルト画面" width="440">
 <img src="docs/captures/skilltree.png" alt="ボス報酬スキルツリー" width="440"> <img src="docs/captures/character-select.png" alt="キャラクター選択" width="440">
 
-仕様書の全文を読む: [英語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
-[中国語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
-[韓国語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
-[日本語](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
-[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf)。
+デザインドキュメントの全文を読む: [英語](examples/lucid-dawn/lucid_dawn_ui_ux_design.en.md) ·
+[中国語](examples/lucid-dawn/lucid_dawn_ui_ux_design.zh.md) ·
+[韓国語](examples/lucid-dawn/lucid_dawn_ui_ux_design.ko.md) ·
+[日本語](examples/lucid-dawn/lucid_dawn_ui_ux_design.ja.md) ·
+[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_design.en.pdf)。
 
 ## インストール
 
@@ -136,28 +136,28 @@ ui-ref init --project-name "My Project"
 ui-ref scan-local
 ```
 
-## 同梱スキル: `game-ui-spec`
+## 同梱スキル: `game-ux-ui-design`
 
-このリポジトリは、ここで集めたリファレンスを **優れたゲーム UX/UI 仕様書** に変える **Claude Code スキル** を
+このリポジトリは、ここで集めたリファレンスを **優れたゲーム UX/UI デザインドキュメント** に変える **Claude Code スキル** を
 同梱する —— survivor-like / 弾幕天国 / ローグライト向けに作られている。場所:
-[`.claude/skills/game-ui-spec/`](.claude/skills/game-ui-spec/)。
+[`.claude/skills/game-ux-ui-design/`](.claude/skills/game-ux-ui-design/)。
 
-GDD や機能ブリーフを与えると、次を備えた仕様書を生成する:
+GDD や機能ブリーフを与えると、次を備えたデザインドキュメントを生成する:
 
 - **リファレンス画像を各画面の本文にインライン埋め込み**（`ui-ref` で収集）;
 - **そのリファレンスから導いたワイヤーフレーム** —— **すべての UI 要素に番号**、領域を矩形/円で、
   **フレーム外へ伸ばす引き出し線** で説明（SVG 注釈引き出しキット ——
-  [`templates/wireframe-kit.svg`](.claude/skills/game-ui-spec/templates/wireframe-kit.svg)）;
+  [`templates/wireframe-kit.svg`](.claude/skills/game-ux-ui-design/templates/wireframe-kit.svg)）;
 - 各画面に **凡例 / 状態マトリクス / 入力パリティ / データバインディング** 表;
 - 画面ごとに平易な言葉の **「UX 設計意図」**（ゲーム UX ヒューリスティクスで考えるが、本文に用語は出さない）;
 - **出荷級（任意）ステージ**: デザイントークン · 数値/意思決定トラッカー · エンジンバインディング · ユーザビリティテスト計画;
-- Markdown ソースを **ワイド 16:9 横向き PDF**（`build_pdf.py` + `spec-pdf.css`）にレンダリングし、密な表も共有しやすく。
+- Markdown ソースを **ワイド 16:9 横向き PDF**（`build_pdf.py` + `design-pdf.css`）にレンダリングし、密な表も共有しやすく。
 
 完全な生成サンプルは **[`examples/lucid-dawn/`](examples/lucid-dawn/)**（12 画面、ワイヤーフレーム 13 点、トークン、
 トラッカー、英/中/韓/日）と上の[成果物サンプル](#成果物サンプル)のキャプチャを参照。
 
 自分のゲームプロジェクトで使うには、スキルフォルダをそのプロジェクトの `.claude/skills/`（または全プロジェクト
-共通なら `~/.claude/skills/`）にコピーし、Claude Code に「〈画面〉の UX/UI 仕様書を作って」と頼む。
+共通なら `~/.claude/skills/`）にコピーし、Claude Code に「〈画面〉の UX/UI デザインドキュメントを作って」と頼む。
 
 ## コマンド
 

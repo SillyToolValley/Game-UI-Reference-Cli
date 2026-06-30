@@ -4,5 +4,5 @@ __pycache__/
 build/
 dist/
 
-# Generated worked-example spec sample (incl. harvested third-party screenshots) — not redistributed; published sample TBD
-.claude/skills/game-ui-spec/examples/lucid-dawn/
+# Generated worked-example design document sample (incl. harvested third-party screenshots) — not redistributed; published sample TBD
+.claude/skills/game-ux-ui-design/examples/lucid-dawn/

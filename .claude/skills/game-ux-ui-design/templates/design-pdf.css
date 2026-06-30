@@ -1,9 +1,9 @@
-/* game-ui-spec — landscape PDF stylesheet for the UX/UI 기획서.
+/* game-ux-ui-design — landscape PDF stylesheet for the UX/UI 디자인 문서.
    Source stays in markdown; build_pdf.py renders md -> HTML -> (Chrome) -> PDF.
    Wide 16:9 page so the 10-column legend / state tables read without ugly wrapping. */
 
 @page {
-  size: 406mm 228mm;            /* ~16:9 landscape, wider than A3 — fits wide spec tables */
+  size: 406mm 228mm;            /* ~16:9 landscape, wider than A3 — fits wide design document tables */
   margin: 13mm 15mm 15mm 15mm;
 }
 @page :first { margin-top: 22mm; }

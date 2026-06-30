@@ -1,8 +1,8 @@
 # Lucid Dawn — UI/UX Decision & Number Tracker (living doc)
 
-> Every number / open decision in `lucid_dawn_ui_ux_spec.*.md`, classified by **source** so it gets locked before ship.
+> Every number / open decision in `lucid_dawn_ui_ux_design.*.md`, classified by **source** so it gets locked before ship.
 > Source: **`GDD`** (cite line) · **`STD`** (WCAG/platform/a11y) · **`EST`** (author proposal — confirm via design/playtest).
-> Status: `OPEN` · `PROPOSED` (has default) · `LOCKED`. Shared across EN/中文/한글 spec versions.
+> Status: `OPEN` · `PROPOSED` (has default) · `LOCKED`. Shared across EN/中文/한글 design versions.
 
 ## 1. GDD-locked values (use as-is)
 | value | GDD § | UI use |
@@ -49,9 +49,9 @@
 | D-17 | text scale range | O4 | **80–150%** | EST/STD | PROPOSED | a11y QA |
 | D-18 | 21:9 / 4:3 HUD scale rule | global | **[TBD]** | EST | OPEN | multi-resolution pass |
 
-## 4. GDD additions needed (data contract) — spec §7 Q13
+## 4. GDD additions needed (data contract) — design document §7 Q13
 Runtime state fields (`RunState`/`PlayerRuntime`/`SkillSlot`/boss·trial runtime) + UI events (`RunTimerTick`, `HpChanged`, `DreamEnergyChanged`, `PurgeGaugeChanged`, `BossHpChanged`, `TrialStarted` …) are absent from GDD §12-1/§12-2 → **add at TDD handoff**. No cash-purchase events (§10 BM).
 
 ## 5. Rules
-- Every `OPEN` must be `LOCKED` before ship. Change estimated numbers here only; the spec references this doc.
-- New spec numbers must carry a source label (GDD/STD/EST) and be registered here.
+- Every `OPEN` must be `LOCKED` before ship. Change estimated numbers here only; the design document references this doc.
+- New design document numbers must carry a source label (GDD/STD/EST) and be registered here.

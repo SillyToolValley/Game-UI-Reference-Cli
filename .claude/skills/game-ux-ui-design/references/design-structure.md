@@ -1,12 +1,12 @@
-# Spec structure — document skeleton, per-screen anatomy, and the hard rules
+# Design document structure — document skeleton, per-screen anatomy, and the hard rules
 
-The copy-paste blanks live in `../templates/spec-skeleton.md` and `../templates/per-screen.md`.
-This file explains **what each part is for and the rules that make the spec implementable**.
+The copy-paste blanks live in `../templates/design-skeleton.md` and `../templates/per-screen.md`.
+This file explains **what each part is for and the rules that make the design document implementable**.
 
-The deliverable is an **annotated spec / redline** — a callout + legend + state + acceptance
+The deliverable is an **annotated design document / redline** — a callout + legend + state + acceptance
 **layer over the intended visual**. It is *not* a fresh fidelity level; it's an annotation
 layer. Distinguish it from: wireframe (structure/hierarchy, low-fi) → mockup (visual, hi-fi)
-→ prototype (interactive). This skill produces the annotated spec, built on a wireframe.
+→ prototype (interactive). This skill produces the annotated design document, built on a wireframe.
 
 ---
 
@@ -45,10 +45,10 @@ Resolves every number in the SVG. Columns:
 The **UX 의도** (a plain one-line reason, no framework names) and a measurable **동작 기준**
 ("…할 때 → …한다, 200ms 내") are required on every row.
 
-### State matrix (per interactive element) — *the #1 spec gap is missing states*
+### State matrix (per interactive element) — *the #1 design document gap is missing states*
 `요소(코드) | default | hover | focus | pressed | selected | disabled/locked | loading | empty | error`.
 For each non-default state give **exact microcopy + visual indicator (icon+color+text) +
-recovery path**. **Never convey a state by color alone.** A spec missing empty/error/loading
+recovery path**. **Never convey a state by color alone.** A design document missing empty/error/loading
 is incomplete.
 
 ### Input parity table
@@ -64,12 +64,12 @@ in the canonical column. See hard rule #7.
 
 ---
 
-## Hard rules (these make the spec traceable & testable)
+## Hard rules (these make the design document traceable & testable)
 
 1. **Immutable element codes.** Every annotated element gets a hierarchical code: UPPERCASE
    section letter + number + optional lowercase variant → `A1`, `D7`, `K4b`. Codes **never
    change**; a removed element's code is **retired permanently and never reused**; new
-   elements **append at the end**. (UXMatters cascading specs.) The SVG badge carries the
+   elements **append at the end**. (UXMatters cascading design documents.) The SVG badge carries the
    running number; the legend carries the immutable code.
 
 2. **Given-When-Then acceptance criteria** on every element code AND every non-default
@@ -86,7 +86,7 @@ in the canonical column. See hard rule #7.
 5. **Inverted-pyramid information order:** critical real-time info most prominent → tactical
    → strategic (in menus) → meta settings deepest.
 
-6. **Keep Open Questions live.** The spec is a talking-through artifact for devs, not a
+6. **Keep Open Questions live.** The design document is a talking-through artifact for devs, not a
    substitute for conversation.
 
 7. **GDD vocabulary check (biggest reliability rule).** Every name in a data-binding
@@ -117,7 +117,7 @@ in the canonical column. See hard rule #7.
     implement (see `screen-exemplars.md` deviation protocol).
 
 ## Sources
-Kiess "A Practical Guide to UX Specifications"; NN/g wireflows; UXMatters cascading UX specs
+Kiess "A Practical Guide to UX Specifications"; NN/g wireflows; UXMatters cascading UX design documents
 (immutable codes, leader lines, legend); Stéphanie Walter (state matrix, a11y, interaction
 parity); Material Design states; Parallel HQ / AltexSoft (Given-When-Then); Unreal
 EventBasedUI / Unity UI Toolkit data-binding; UXPin / Balsamiq (artifact types).

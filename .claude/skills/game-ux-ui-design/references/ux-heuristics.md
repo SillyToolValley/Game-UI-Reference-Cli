@@ -2,9 +2,9 @@
 
 This is the most important reference in the skill — but it is the AI's **thinking tool, not
 the reader's vocabulary**. Use this checklist to *decide* what the UI should do; then write
-the spec in **plain language for a mixed meeting audience** (기획·아트·개발·PM). A spec stuffed
+the design document in **plain language for a mixed meeting audience** (기획·아트·개발·PM). A design document stuffed
 with "Hodent / Nielsen #1 / diegetic / juice budget / GWT / 역피라미드" is unreadable to the
-people who have to build from it — that is a failing spec, even if every claim is "defensible."
+people who have to build from it — that is a failing design document, even if every claim is "defensible."
 
 > **OUTPUT STYLE (load-bearing).** Reason with the frameworks below; write the document
 > WITHOUT naming them. Every UX claim in the body is a plain Korean sentence — the *decision*

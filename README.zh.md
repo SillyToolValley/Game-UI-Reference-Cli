@@ -32,20 +32,20 @@
 
 每次运行还会写出一张可浏览的**联系表**（`ui_research/manifests/contact_sheet_*.html`），其中下载的缩略图
 内联显示，并附每张图的标题、尺寸与**来源链接**，外加一份**清单**（`scan-local` →
-`local_ui_refs_manifest.{json,md}`）。这些收集到的参考正是下方线框图的**来源** —— 每个规格界面都注明了
+`local_ui_refs_manifest.{json,md}`）。这些收集到的参考正是下方线框图的**来源** —— 每个设计界面都注明了
 它所借鉴的具体截图。
 
 ## 成果示例
 
 一个完整的实战示例位于 **[`examples/lucid-dawn/`](examples/lucid-dawn/)** —— 一款 survivor-like/roguelite
-（*Lucid Dawn: Dream Survivor*）的完整 UX/UI 规格书，由 `game-ui-spec` 技能基于 `ui-ref` 收集的参考生成。
+（*Lucid Dawn: Dream Survivor*）的完整 UX/UI 设计文档，由 `game-ux-ui-design` 技能基于 `ui-ref` 收集的参考生成。
 涵盖 **12 个界面**（游戏外+游戏内）、**13 张带标注线框图**，提供英文、中文、韩文、日文四个版本。
 
 **带标注线框图** —— 每个 UI 元素都编号，区域以方框/圆圈标注，引线拉到画面 *之外* 的侧栏标签：
 
 <img src="docs/captures/hud.png" alt="游戏内 HUD 标注线框图" width="900">
 
-### 规格书有多详细？
+### 设计文档有多详细？
 
 每张线框图下方，**12 个界面中的每一个** 都包含：
 
@@ -80,21 +80,21 @@ GDD 锁定 / 标准 / 估算），以及 **引擎绑定（UI Toolkit × DOTS）*
 
 </details>
 
-下面是一张**真实渲染的规格书页面**（游戏内 HUD 界面 —— 参考截图、带标注线框图，以及完整的 10 列图例表，
+下面是一张**真实渲染的设计文档页面**（游戏内 HUD 界面 —— 参考截图、带标注线框图，以及完整的 10 列图例表，
 即交付原样）：
 
-![规格书页面示例 —— 游戏内 HUD](docs/captures/spec-page-hud.png)
+![设计文档页面示例 —— 游戏内 HUD](docs/captures/design-page-hud.png)
 
 **更多界面** —— 全部见 [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/)：
 
 <img src="docs/captures/levelup.png" alt="升级/选物" width="440"> <img src="docs/captures/results.png" alt="结算界面" width="440">
 <img src="docs/captures/skilltree.png" alt="Boss 奖励技能树" width="440"> <img src="docs/captures/character-select.png" alt="角色选择" width="440">
 
-查看完整规格书：[英文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.md) ·
-[中文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.zh.md) ·
-[韩文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ko.md) ·
-[日文](examples/lucid-dawn/lucid_dawn_ui_ux_spec.ja.md) ·
-[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_spec.en.pdf)。
+查看完整设计文档：[英文](examples/lucid-dawn/lucid_dawn_ui_ux_design.en.md) ·
+[中文](examples/lucid-dawn/lucid_dawn_ui_ux_design.zh.md) ·
+[韩文](examples/lucid-dawn/lucid_dawn_ui_ux_design.ko.md) ·
+[日文](examples/lucid-dawn/lucid_dawn_ui_ux_design.ja.md) ·
+[PDF](examples/lucid-dawn/lucid_dawn_ui_ux_design.en.pdf)。
 
 ## 安装
 
@@ -131,28 +131,28 @@ ui-ref init --project-name "My Project"
 ui-ref scan-local
 ```
 
-## 配套技能：`game-ui-spec`
+## 配套技能：`game-ux-ui-design`
 
-本仓库附带一个 **Claude Code 技能**，把你在这里收集的参考转化为 **优秀的游戏 UX/UI 规格书** ——
+本仓库附带一个 **Claude Code 技能**，把你在这里收集的参考转化为 **优秀的游戏 UX/UI 设计文档** ——
 专为 survivor-like / 弹幕天堂 / roguelite 游戏打造。位置：
-[`.claude/skills/game-ui-spec/`](.claude/skills/game-ui-spec/)。
+[`.claude/skills/game-ux-ui-design/`](.claude/skills/game-ux-ui-design/)。
 
-给定 GDD 或功能简报，它会产出这样的规格书：
+给定 GDD 或功能简报，它会产出这样的设计文档：
 
 - **参考图内联嵌入到每个界面正文**（用 `ui-ref` 收集）；
 - **由这些参考推导出的线框图**——**每个 UI 元素都编号**、区域以方框/圆圈标注、**引线拉出画面外**做说明
   （SVG 标注引线套件——见
-  [`templates/wireframe-kit.svg`](.claude/skills/game-ui-spec/templates/wireframe-kit.svg)）；
+  [`templates/wireframe-kit.svg`](.claude/skills/game-ux-ui-design/templates/wireframe-kit.svg)）；
 - 每个界面都有 **图例 / 状态矩阵 / 输入对等 / 数据绑定** 表；
 - 每个界面都有通俗语言的 **「UX 设计意图」**（用游戏 UX 启发法思考，但正文不出现术语）；
 - **出货级（可选）阶段**：设计令牌 · 数值/决策追踪表 · 引擎绑定 · 可用性测试计划；
-- Markdown 源渲染为 **宽屏 16:9 横向 PDF**（`build_pdf.py` + `spec-pdf.css`），让密集表格便于分享。
+- Markdown 源渲染为 **宽屏 16:9 横向 PDF**（`build_pdf.py` + `design-pdf.css`），让密集表格便于分享。
 
 完整生成示例见 **[`examples/lucid-dawn/`](examples/lucid-dawn/)**（12 界面、13 张线框图、令牌、追踪表、
 英/中/韩/日）以及上方的[成果示例](#成果示例)截图。
 
 要在你的游戏项目中使用，把技能文件夹复制到该项目的 `.claude/skills/`（或复制到 `~/.claude/skills/`
-以对所有项目生效），然后让 Claude Code “画出〈某界面〉的 UX/UI 规格书”。
+以对所有项目生效），然后让 Claude Code “画出〈某界面〉的 UX/UI 设计文档”。
 
 ## 命令
 

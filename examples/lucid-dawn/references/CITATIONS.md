@@ -2,7 +2,7 @@
 
 The thumbnails under `ui/web-refs/` are **low-resolution research citations** gathered with this
 repo's `ui-ref` CLI from **[interfaceingame.com](https://interfaceingame.com)** per-game pages.
-They are included to make the example spec render and to study UI/UX patterns — **not** a
+They are included to make the example design document render and to study UI/UX patterns — **not** a
 redistributable asset pack and **not** training data. All rights remain with the original games
 and their publishers. If you are a rights holder and want a thumbnail removed, please open an issue.
 
@@ -25,4 +25,4 @@ ui-ref scan-local
 ```
 
 Direct survivor-like titles (Vampire Survivors / Brotato / 20 Minutes Till Dawn / Soulstone
-Survivors) are not on interfaceingame; their patterns are described in words in the spec (Appendix B-2).
+Survivors) are not on interfaceingame; their patterns are described in words in the design (Appendix B-2).

@@ -1,6 +1,6 @@
-# Lucid Dawn: Dream Survivor — UI/UX 仕様書 全編（アウトゲーム + インゲーム）
+# Lucid Dawn: Dream Survivor — UI/UX デザインドキュメント 全編（アウトゲーム + インゲーム）
 
-> **注釈付きワイヤーフレーム仕様書。** 各画面には ① 参考にした実ゲーム UI（`ui-ref` で
+> **注釈付きワイヤーフレームデザインドキュメント。** 各画面には ① 参考にした実ゲーム UI（`ui-ref` で
 > Web から収集し、インラインで埋め込み）、② それを基に起こしたワイヤーフレーム（`wireframes/*.svg`）、③ 番号付き凡例
 > （各要素を枠/丸で囲み、リーダー線をフレーム外へ引き出す）、④ 状態マトリクス・入力
 > パリティ・データバインディング、⑤ 平易な言葉による **UX 設計意図**。編集用ソース = この `.md`、共有用 =
@@ -19,7 +19,7 @@
 
 | 項目 | 内容 |
 | --- | --- |
-| ドキュメント | Lucid Dawn: Dream Survivor — UI/UX 仕様書 全編（アウトゲーム + インゲーム） |
+| ドキュメント | Lucid Dawn: Dream Survivor — UI/UX デザインドキュメント 全編（アウトゲーム + インゲーム） |
 | ゲーム / ビルド | Lucid Dawn: Dream Survivor / Vertical Slice（v0.8 スコープ、v0.9 GDD） |
 | バージョン / 日付 / 担当 | v1.0 (日本語、EN マスター基準) / 2026-06-30 / UX |
 | ステータス | ドラフト |
@@ -1244,7 +1244,7 @@ FailedWake のメタ報酬比率。リーダーボード軸の露出。
 | ライセンス/公式の混同（#1） | O1, O2 | キャラ名/表示のライセンス領域 — **レイアウトのみ、法務は別途** | 表示ガイドラインレビュー |
 | 協力の時間停止が他者を妨害（#6） | （スコープ外） | VS で未実装; プレイヤー別/チーム/共同エフェクトの分割は協力ビルド時 | —（UX スコープ外） |
 
-> #1 と #6 は一部 UX の外（法務 / 協力ビルド）であり、その旨を明記する。残りは本仕様書のレイアウト/状態/フィードバックのルールで扱う。
+> #1 と #6 は一部 UX の外（法務 / 協力ビルド）であり、その旨を明記する。残りは本デザインドキュメントのレイアウト/状態/フィードバックのルールで扱う。
 
 ## 7. 未解決事項（集約）
 | # | 画面 | 質問 |
@@ -1312,8 +1312,8 @@ ui-ref scan-local
 ## Appendix C. ビルド（共有物）+ ワイヤーフレーム検証
 ```bash
 pip install markdown python-docx
-python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_spec.en.md --css <skill>/templates/spec-pdf.css
-python <skill>/templates/build_docx.py lucid_dawn_ui_ux_spec.en.md   # render wireframes/*.png first
+python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_design.en.md --css <skill>/templates/design-pdf.css
+python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render wireframes/*.png first
 ```
 13 枚すべてのワイヤーフレームが `validate_wireframe.py` を通過（XML、背景 rect、コールアウト ≤10、バッジ 2 回、リーダー ≤4 本で非交差、ガター 片側 ≤6、キャンバス外無し）+ ヘッドレス Chrome レンダー目視。flow.svg はワイヤーフロー（コールアウト linter は免除）。
 

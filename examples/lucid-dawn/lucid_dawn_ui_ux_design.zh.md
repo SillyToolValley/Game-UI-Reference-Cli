@@ -1,6 +1,6 @@
-# Lucid Dawn: Dream Survivor — 完整 UI/UX 规格（局外 + 局内）
+# Lucid Dawn: Dream Survivor — 完整 UI/UX 设计（局外 + 局内）
 
-> **标注式线框规格。** 每个画面都包含 ① 其参考的真实游戏 UI（用
+> **标注式线框设计。** 每个画面都包含 ① 其参考的真实游戏 UI（用
 > `ui-ref` 从网络采集，内嵌展示）、② 由其衍生的线框图（`wireframes/*.svg`）、③ 编号图例
 > （每个元素用框/圈标出，并以引线拉到画框外标注）、④ 状态矩阵 · 输入对等 · 数据
 > 绑定、⑤ 通俗易懂的 **UX 设计意图**。可编辑源文件 = 本 `.md`；可分享版 =
@@ -19,7 +19,7 @@
 
 | 字段 | 值 |
 | --- | --- |
-| 文档 | Lucid Dawn: Dream Survivor — 完整 UI/UX 规格（局外 + 局内） |
+| 文档 | Lucid Dawn: Dream Survivor — 完整 UI/UX 设计（局外 + 局内） |
 | 游戏 / 构建 | Lucid Dawn: Dream Survivor / Vertical Slice（v0.8 范围，v0.9 GDD） |
 | 版本 / 日期 / 作者 | v1.0 (简体中文，基于 EN 母版) / 2026-06-30 / UX |
 | 状态 | draft |
@@ -108,7 +108,7 @@
 | C-PROMPT | 输入提示 | mouse·key·pad | 自动显示当前设备图符（无需记忆） | 全部底部 |
 | C-BADGE | 状态徽标 | rarity·ending·combo·new | 颜色 + **必须有文字标签** | I3·I4·I6 |
 
-## 5. 画面规格
+## 5. 画面设计
 
 > 每个画面的顺序：目的 → 参考 → 线框图 → 图例 → 状态矩阵 → 输入对等 → 数据绑定 → 导航 → 边界情况 → 无障碍 → UX 设计意图 → 待定问题 → 验收。局外 O1–O6，局内 I1–I6。
 
@@ -1244,7 +1244,7 @@ FailedWake 的 meta 奖励比例。排行榜维度的暴露。
 | 授权/官方混淆 (#1) | O1, O2 | 角色名/显示授权区 —— **仅布局，法务另行** | 显示规范评审 |
 | 合作时停打扰他人 (#6) | （超出范围） | VS 中未实现；逐玩家/团队/联合效果在合作版本拆分 | —（超出 UX 范围） |
 
-> #1 与 #6 部分超出 UX 范畴（法律 / 合作版本），并已如此标注。其余由本规格的 布局/状态/反馈 规则处理。
+> #1 与 #6 部分超出 UX 范畴（法律 / 合作版本），并已如此标注。其余由本设计的 布局/状态/反馈 规则处理。
 
 ## 7. 待定问题（汇总）
 | # | 画面 | 问题 |
@@ -1268,7 +1268,7 @@ FailedWake 的 meta 奖励比例。排行榜维度的暴露。
 ## 8. 版本历史
 | 版本 | 日期 | 变更 |
 | --- | --- | --- |
-| v1.0 (EN master) | 2026-06-30 | 完整 局外(O1–O6)+局内(I1–I6) 标注式线框规格、网络采集参考（interfaceingame，8 款游戏）、设计令牌 + 决策追踪表、引擎绑定（附录 D）、可用性测试计划（附录 E）。13 张线框图 lint+render 通过。韩文/中文版本由本母版衍生。 |
+| v1.0 (EN master) | 2026-06-30 | 完整 局外(O1–O6)+局内(I1–I6) 标注式线框设计、网络采集参考（interfaceingame，8 款游戏）、设计令牌 + 决策追踪表、引擎绑定（附录 D）、可用性测试计划（附录 E）。13 张线框图 lint+render 通过。韩文/中文版本由本母版衍生。 |
 
 ## 附录 A. 方法论（依据）
 UX 设计意图各节以下列框架推理，但正文从不点名（通俗语言规则）。
@@ -1312,8 +1312,8 @@ ui-ref scan-local
 ## 附录 C. 构建（可分享版）+ 线框图校验
 ```bash
 pip install markdown python-docx
-python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_spec.en.md --css <skill>/templates/spec-pdf.css
-python <skill>/templates/build_docx.py lucid_dawn_ui_ux_spec.en.md   # render wireframes/*.png first
+python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_design.en.md --css <skill>/templates/design-pdf.css
+python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render wireframes/*.png first
 ```
 全部 13 张线框图通过 `validate_wireframe.py`（XML、背景矩形、≤10 标注、徽标出现两次、引线 ≤4 点且不交叉、留白每侧 ≤6、无越界画布）+ headless-Chrome 渲染目检。flow.svg 是流程线框图（豁免标注 linter）。
 

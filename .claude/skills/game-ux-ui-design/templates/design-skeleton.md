@@ -1,8 +1,8 @@
-# {게임명} UI/UX 기획서 — {기능 / 화면군}
+# {게임명} UI/UX 디자인 문서 — {기능 / 화면군}
 
 > 복사해서 채우는 문서 스켈레톤. `{...}`를 GDD 근거로 채운다. 와이어프레임은 `wireframes/*.svg`로
 > 분리, 레퍼런스 이미지는 `references/ui/...`에 **별도 파일 링크**로 첨부(임베드 금지).
-> 작성 규칙·근거: `references/spec-structure.md`, `references/ux-heuristics.md`.
+> 작성 규칙·근거: `references/design-structure.md`, `references/ux-heuristics.md`.
 
 ---
 
@@ -10,7 +10,7 @@
 
 | 항목 | 값 |
 | --- | --- |
-| 문서명 | {게임명} UI/UX 기획서 — {화면군} |
+| 문서명 | {게임명} UI/UX 디자인 문서 — {화면군} |
 | 게임 / 빌드 | {game} / {milestone, e.g. Vertical Slice} |
 | 버전 / 날짜 / 작성자 | v0.1 / {date} / {author} |
 | 상태 | draft · review · approved 중 하나 |
@@ -18,7 +18,7 @@
 
 ## 1. 개요 및 목표
 
-- **이 문서가 푸는 문제**: {what UI problem this spec answers}
+- **이 문서가 푸는 문제**: {what UI problem this design answers}
 - **핵심 경험 목표**: {1–2문장, GDD §핵심 경험에서}
 - **측정 가능 성공 지표**: {testable, GDD 통과 기준에서 — e.g. "어느 순간에도 7시까지 남은 시간을 1초 내 인지"}
 - **포함 범위 / 제외 범위**: {in / out of scope screens}
@@ -44,7 +44,7 @@
 ## 3. 화면 흐름도 (wireflow)
 
 ```text
-{paste GDD screen flow; 각 노드에 게임 STATE와 스펙 섹션 번호 주석}
+{paste GDD screen flow; 각 노드에 게임 STATE와 디자인 문서 섹션 번호 주석}
 ```
 ![screen flow](wireframes/flow.svg)
 

@@ -19,7 +19,7 @@
   LABEL LENGTH BUDGET (CJK-aware): the budget is in PIXELS, not characters. A
   Hangul/CJK glyph at font-size 18 is ~18px (~2x a Latin char). Right gutter is
   270px wide, so keep right-gutter label text <= ~12 Hangul (or ~22 Latin). Put
-  the real spec in the legend table, not the SVG. If a right label would clip,
+  the real design document in the legend table, not the SVG. If a right label would clip,
   shorten it (move detail to the legend) — never let text pass x=1760.
 
   THE 5 REUSABLE PIECES are defined as <symbol>/<g> patterns below. Copy a
@@ -28,7 +28,7 @@
   single point element (icon, single button, indicator dot).
 
   LEGIBILITY DO/DON'T:
-    DO  keep label text <= ~22 chars; put the real spec in the legend table.
+    DO  keep label text <= ~22 chars; put the real design document in the legend table.
     DO  group each callout (region + badge + leader + label) in one <g id="cN">.
     DO  use rx on rects (rounded) and dashed strokes so regions read as overlays.
     DON'T cross leader lines; DON'T overlap badges; DON'T shrink text below 16px.

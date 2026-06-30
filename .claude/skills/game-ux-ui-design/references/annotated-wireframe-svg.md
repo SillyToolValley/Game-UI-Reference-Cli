@@ -1,6 +1,6 @@
 # Annotated wireframe kit (SVG) — how to draw numbered callouts with leader lines
 
-This is the heart of the deliverable. Every screen in the spec gets ONE annotated
+This is the heart of the deliverable. Every screen in the design document gets ONE annotated
 wireframe: a 16:9 screen drawn as boxes, with **each UI element numbered, its region
 marked by a rectangle or circle, and a leader line pulled OUTSIDE the frame to a short
 label**. The full description for each number lives in a **legend table** beneath the
@@ -130,20 +130,20 @@ diagrams (e.g. `hud.svg` + `hud-boss.svg`) rather than crowding leaders. A frame
   sweep), or move its channel left of the other's terminus. Re-run `validate_wireframe.py` after
   each move — it reports the exact crossing point. (Mirror on the right gutter toward `x=1530`.)
 
-**Convention conformance (geometry must match the prose).** If the spec's text promises a
+**Convention conformance (geometry must match the prose).** If the design's text promises a
 layout convention (e.g. "timer top-center, boss bar takes over that slot"), the wireframe's
 geometry must actually implement it: the boss bar must occupy the **same screen region** the
 timer occupied. If your timer is in a corner, you are NOT implementing the takeover pattern —
 either center it or **drop the claim and document the deviation** (see `screen-exemplars.md`).
-Mismatched prose-vs-geometry is the #1 way a wireframe silently contradicts its own spec.
+Mismatched prose-vs-geometry is the #1 way a wireframe silently contradicts its own design document.
 
-**Immutable element codes (for multi-version specs).** When the spec will live across
+**Immutable element codes (for multi-version design documents).** When the design document will live across
 versions, give each element a stable hierarchical code in the legend — UPPERCASE section
 letter + number + optional variant letter (`A1`, `D7`, `K4b`). Codes **never change** and
 a removed element's code is **retired, never reused**; new elements append at the end. The
 SVG badge shows the running number; the legend table carries the immutable code. This is
 what keeps a callout traceable when the wireframe is redrawn. (Convention: UXMatters
-cascading UX specs.)
+cascading UX design documents.)
 
 ---
 
@@ -160,7 +160,7 @@ cascading UX specs.)
 
 | ✅ Do | ❌ Don't |
 | --- | --- |
-| Keep gutter label text ≤ ~22 chars; real spec goes in the legend table | Write paragraphs inside the SVG |
+| Keep gutter label text ≤ ~22 chars; real design document goes in the legend table | Write paragraphs inside the SVG |
 | Group every callout in `<g id="cN">` | Leave loose elements ungrouped |
 | Use dashed strokes + `rx` so regions read as overlays | Solid fills that hide the wireframe |
 | Stagger labels; one bend per leader; no crossings | Spaghetti leaders that cross |
@@ -171,7 +171,7 @@ cascading UX specs.)
 
 ## The legend table (always directly under the SVG)
 
-Every number in the SVG resolves here. This is where the real spec lives.
+Every number in the SVG resolves here. This is where the real design document lives.
 
 ```markdown
 | # | 요소 | 위치 | 표시 조건 | 동작 / 상태 | 데이터 바인딩 | UX 근거 |
@@ -181,7 +181,7 @@ Every number in the SVG resolves here. This is where the real spec lives.
 ```
 
 - **UX 근거** is mandatory for every row — tie it to a heuristic (see
-  `ux-heuristics.md`). A callout with no rationale is decoration, not a spec.
+  `ux-heuristics.md`). A callout with no rationale is decoration, not a design document.
 - **데이터 바인딩** ties the element to a game state/event/field so it is implementable
   (e.g. `RunTelemetry.minute_purge`, `BossPattern.telegraph_time`).
 
@@ -236,4 +236,4 @@ printf '<!doctype html><body style="margin:0"><img src="file:///%s" width="1760"
 chrome --headless=new --window-size=1760,820 --screenshot=_v.png _v.html   # or msedge
 ```
 Open `_v.png` and confirm: no leader crosses, no gutter label is clipped at the right edge,
-labels are legible, and the geometry matches the spec's prose (convention conformance).
+labels are legible, and the geometry matches the design's prose (convention conformance).

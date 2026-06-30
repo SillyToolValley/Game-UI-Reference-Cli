@@ -1,17 +1,17 @@
 # Examples
 
-A fully worked example (a real *Lucid Dawn* UX/UI 기획서 — HUD / 레벨업 / 결과 화면) was
+A fully worked example (a real *Lucid Dawn* UX/UI 디자인 문서 — HUD / 레벨업 / 결과 화면) was
 produced with this skill to validate it end-to-end. **A published, polished sample will be
 added here later**, once it's developed further. (The draft + its harvested reference
 screenshots are kept local for now and not committed.)
 
-## What a generated spec looks like
+## What a generated design document looks like
 
 Running the skill on a GDD produces, under your project:
 
 ```
-spec.md                      # the editable markdown source (§0 표지 → §8 + 부록)
-spec.pdf / spec.docx         # rendered shares: wide 16:9 landscape (read / edit)
+design.md                      # the editable markdown source (§0 표지 → §8 + 부록)
+design.pdf / design.docx         # rendered shares: wide 16:9 landscape (read / edit)
 wireframes/<screen>.svg      # annotated wireframes — numbered callouts, region boxes,
                              #   leader lines pulled outside the frame to gutter labels
 references/ui/<col>/<cat>/*   # reference screenshots harvested with `ui-ref`, embedded
@@ -30,4 +30,4 @@ references/REFERENCE_BOARD.md # the harvest plan/index (appendix)
    data-bindings tied to the GDD's fields/events.
 
 To generate one: copy this skill into your game project's `.claude/skills/`, then ask for
-the UX/UI 기획서 of the screens you want (see `../SKILL.md` for the process).
+the UX/UI 디자인 문서 of the screens you want (see `../SKILL.md` for the process).
