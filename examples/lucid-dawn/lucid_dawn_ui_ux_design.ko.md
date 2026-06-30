@@ -1267,7 +1267,7 @@ FailedWake 메타 보상 비율. 리더보드 축 노출.
 ## 8. 버전 이력
 | version | date | change |
 | --- | --- | --- |
-| v1.0 (EN master) | 2026-06-30 | 전체 아웃게임(O1–O6)+인게임(I1–I6) 주석형 와이어프레임 디자인 문서, 웹 수집 참고(interfaceingame, 8개 게임), 디자인 토큰 + 결정 추적기, 엔진 바인딩(부록 D), 사용성 테스트 계획(부록 E). 13개 와이어프레임 린트+렌더 통과. 한국어/중국어 버전은 이 마스터에서 파생. |
+| v1.0 (EN master) | 2026-06-30 | 전체 아웃게임(O1–O6)+인게임(I1–I6) 주석형 와이어프레임 디자인 문서, 웹 수집 참고(interfaceingame, 8개 게임), 디자인 토큰 + 결정 추적기, 선택형 아트 컨셉 패스, 엔진 바인딩(부록 D), 사용성 테스트 계획(부록 E). 13개 와이어프레임 린트+렌더 통과. 한국어/중국어 버전은 이 마스터에서 파생. |
 
 ## 부록 A. 방법론 (근거)
 UX rationale 섹션은 아래 프레임워크로 추론하되 본문에서는 이름을 절대 언급하지 않는다(쉬운 말 규칙).
@@ -1315,6 +1315,16 @@ python <skill>/templates/build_pdf.py  lucid_dawn_ui_ux_design.en.md --css <skil
 python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render wireframes/*.png first
 ```
 13개 와이어프레임 모두 `validate_wireframe.py`(XML, 배경 rect, 콜아웃 ≤10, 배지 2회, 리더선 ≤4pt 비교차, 거터 ≤6/측면, 캔버스 밖 없음) + 헤드리스-Chrome 렌더 눈검사 통과. flow.svg는 와이어플로우(콜아웃 린터 면제).
+
+### C-2. 선택형 아트 컨셉 패스
+
+I3 레벨업 / 아이템 선택 화면의 UI 아트 방향성 컨셉 1장을 포함한다:
+
+![레벨업 UI 아트 컨셉](art-concepts/levelup-ui-art-concept.png)
+
+소스 프롬프트: [`art-concepts/levelup-ui-art-concept.prompt.md`](art-concepts/levelup-ui-art-concept.prompt.md).
+이 이미지는 I3 와이어프레임, GDD/디자인 맥락, 비주얼 토큰, 수집 레퍼런스 메모를 바탕으로 생성했다.
+무드/재질 방향 확인용이며, 정확한 문구·치수·상태·데이터 바인딩·접근성은 이 디자인 문서와 토큰 파일을 기준으로 한다.
 
 ## 부록 D. 구현 바인딩 — Unity 6 UI Toolkit × DOTS/ECS
 > §5 데이터 바인딩을 선택 스택(Unity 6 · DOTS · UI Toolkit)에서 **이벤트 기반, no-GC**로 구현. 권위 참조: `unity-dots-manual`, bullet-hell 렌더링 레시피. 최종 결정 = TDD.

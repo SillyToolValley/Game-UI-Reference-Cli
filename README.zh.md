@@ -6,6 +6,12 @@
 
 [English](README.md) · **中文** · [한국어](README.ko.md) · [日本語](README.ja.md)
 
+<img src="examples/lucid-dawn/art-concepts/levelup-ui-art-concept.png" alt="基于 ui-ref 参考生成的升级 UI 美术概念" width="900">
+
+**基于本 CLI 收集的 UI 参考生成的概念图。** `game-ux-ui-design` 技能可以把稳定线框图、GDD/设计上下文、
+已收集参考说明交给 Codex/imagegen，生成 UI 美术方向 mockup。此图只用于确认氛围与材质方向；精确文字、
+尺寸、状态和无障碍规则仍以设计文档和令牌为准。
+
 一个聚焦游戏 UI、依赖极轻的 **UI 参考研究** 命令行工具。它会索引你本地已有的 UI 参考图，并（可选）
 从公开 UI 数据库收集参考页面——渲染页面、缓存其 HTML 与图片元数据、按需下载缩略图——以便研究 UI/UX 模式。
 
@@ -146,7 +152,8 @@ ui-ref scan-local
 - 每个界面都有 **图例 / 状态矩阵 / 输入对等 / 数据绑定** 表；
 - 每个界面都有通俗语言的 **「UX 设计意图」**（用游戏 UX 启发法思考，但正文不出现术语）；
 - **出货级（可选）阶段**：设计令牌 · 数值/决策追踪表 · 引擎绑定 · 可用性测试计划；
-- Markdown 源渲染为 **宽屏 16:9 横向 PDF**（`build_pdf.py` + `design-pdf.css`），让密集表格便于分享。
+- Markdown 源渲染为 **宽屏 16:9 横向 PDF**（`build_pdf.py` + `design-pdf.css`），让密集表格便于分享；
+- 可选地把选定线框图生成 **UI 美术概念 mockup**，用于检查氛围、材质语言以及卡牌/HUD 处理。
 
 完整生成示例见 **[`examples/lucid-dawn/`](examples/lucid-dawn/)**（12 界面、13 张线框图、令牌、追踪表、
 英/中/韩/日）以及上方的[成果示例](#成果示例)截图。

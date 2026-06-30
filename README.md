@@ -6,6 +6,13 @@
 
 **English** · [中文](README.zh.md) · [한국어](README.ko.md) · [日本語](README.ja.md)
 
+<img src="examples/lucid-dawn/art-concepts/levelup-ui-art-concept.png" alt="Generated level-up UI art concept from ui-ref references" width="900">
+
+**Concept art generated from UI references collected with this CLI.** The `game-ux-ui-design`
+skill can take a stable wireframe, GDD/design context, and harvested reference notes, then ask
+Codex/imagegen for UI art-direction mockups. This image is for mood/material direction; exact
+text, measurements, states, and accessibility still come from the design document and tokens.
+
 A small, dependency-light CLI for **UI reference research**, focused on game UI. It
 indexes the UI reference images you already keep locally, and (optionally) collects
 reference pages from public UI databases — rendering them, caching their HTML and
@@ -162,6 +169,8 @@ Given a GDD or feature brief, it produces a design document where:
   (Hodent, Nielsen, Pinelle/PLAY, accessibility guidelines); and
 - the markdown source renders to a **wide 16:9 landscape PDF** (`build_pdf.py` + `design-pdf.css`)
   so the dense design document tables stay readable for sharing.
+- optionally, selected wireframes can be turned into **UI art concept mockups** with
+  Codex/imagegen to test mood, material language, and card/HUD treatment before production art.
 
 See **[`examples/lucid-dawn/`](examples/lucid-dawn/)** for a full generated sample (12 screens,
 13 wireframes, tokens, decision tracker; English, Chinese, Korean, and Japanese) — and the

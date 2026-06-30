@@ -1268,7 +1268,7 @@ FailedWake meta reward ratio. Leaderboard axis exposure.
 ## 8. Version history
 | version | date | change |
 | --- | --- | --- |
-| v1.0 (EN master) | 2026-06-30 | Full out-game(O1–O6)+in-game(I1–I6) annotated-wireframe design document, web-harvested refs (interfaceingame, 8 games), design tokens + decision tracker, engine binding (App. D), usability test plan (App. E). 13 wireframes lint+render pass. Korean/Chinese versions derived from this master. |
+| v1.0 (EN master) | 2026-06-30 | Full out-game(O1–O6)+in-game(I1–I6) annotated-wireframe design document, web-harvested refs (interfaceingame, 8 games), design tokens + decision tracker, optional art concept pass, engine binding (App. D), usability test plan (App. E). 13 wireframes lint+render pass. Korean/Chinese versions derived from this master. |
 
 ## Appendix A. Methodology (rationale)
 The UX rationale sections reason with the frameworks below but never name them in the body (plain-language rule).
@@ -1317,6 +1317,17 @@ python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render 
 ```
 All 13 wireframes pass `validate_wireframe.py` (XML, background rect, ≤10 callouts, badges twice, leaders ≤4 pts non-crossing, gutter ≤6/side, no off-canvas) + headless-Chrome render eyeball. flow.svg is a wireflow (exempt from the callout linter).
 
+### C-2. Optional art concept pass
+
+One generated UI art-direction concept is included for I3 Level-up / Item pick:
+
+![Level-up UI art concept](art-concepts/levelup-ui-art-concept.png)
+
+Source prompt: [`art-concepts/levelup-ui-art-concept.prompt.md`](art-concepts/levelup-ui-art-concept.prompt.md).
+This image was generated from the I3 wireframe, GDD/design context, visual tokens, and harvested
+reference notes. Treat it as mood/material direction only; exact text, measurements, states, data
+binding, and accessibility remain governed by this design document and the token file.
+
 ## Appendix D. Implementation binding — Unity 6 UI Toolkit × DOTS/ECS
 > Implements §5 data binding **event-driven, no-GC** on the chosen stack (Unity 6 · DOTS · UI Toolkit). Authoritative refs: `unity-dots-manual`, bullet-hell rendering recipe. Final decisions = TDD.
 
@@ -1345,7 +1356,6 @@ All 13 wireframes pass `validate_wireframe.py` (XML, background rect, ≤10 call
 - **Metrics**: per-task success/time/errors · SUS · fun/engagement survey · **readability-under-chaos** (frozen high-density screenshot id accuracy, separate colorblind session) · accessibility (colorblind id / toggle behavior).
 - **Pass bar / iteration**: core tasks (T1·T2·T3·T6) success ≥85%, T2 1s-read ≥90%, colorblind lethal id =100%. Misses → adjust the corresponding number in the tracker and re-test; reflect in §8.
 - **Limit**: this is the *test design*. A real clickable prototype / sessions / SUS tally need build + people — not performed here.
-
 
 
 

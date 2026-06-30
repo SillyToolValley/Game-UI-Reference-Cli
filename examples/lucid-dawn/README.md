@@ -6,6 +6,8 @@ with **`ui-ref`**. It shows, end to end, what this repo's output looks like.
 ## Contents
 - **Design** — `lucid_dawn_ui_ux_design.en.md` / `.zh.md` / `.ko.md` / `.ja.md` (+ matching PDFs). 12 screens (out-game + in-game).
 - **Wireframes** — `wireframes/*.svg` (+ rendered `*.png`): 13 annotated frames + `flow.svg`.
+- **Art concept** — `art-concepts/levelup-ui-art-concept.png`: one optional imagegen pass from the
+  level-up wireframe + GDD/design context + harvested reference notes.
 - **Design tokens** — `lucid_dawn_ui_ux_tokens.md` (color hex / type / motion / USS mapping).
 - **Decision & number tracker** — `lucid_dawn_ui_ux_decisions.md` (each number tagged GDD-locked / standard / estimated).
 - **References** — `references/ui/web-refs/` (harvested thumbnails; see `references/CITATIONS.md`).
@@ -16,6 +18,16 @@ a gutter label. Under each screen sit a legend, a state matrix, an input-parity 
 table verified against the GDD, and a plain-language UX rationale. The design also ships production-grade
 companions: design tokens, a decision tracker, an engine-binding appendix (UI Toolkit × DOTS), and a
 usability-test plan. (For a quick tour and captures, see the repo's main [README](../../README.md).)
+
+## Optional art concept pass
+
+The design can optionally include a small UI art-direction pass after the wireframes are stable. This
+example includes one generated concept for the level-up / item-pick modal:
+
+![Level-up UI art concept](art-concepts/levelup-ui-art-concept.png)
+
+Treat it as mood/material direction only. Exact text, measurements, states, data binding, and
+accessibility rules still come from the design document and tokens.
 
 ## Languages
 The design is provided in four languages — read whichever you prefer:

@@ -1268,7 +1268,7 @@ FailedWake 的 meta 奖励比例。排行榜维度的暴露。
 ## 8. 版本历史
 | 版本 | 日期 | 变更 |
 | --- | --- | --- |
-| v1.0 (EN master) | 2026-06-30 | 完整 局外(O1–O6)+局内(I1–I6) 标注式线框设计、网络采集参考（interfaceingame，8 款游戏）、设计令牌 + 决策追踪表、引擎绑定（附录 D）、可用性测试计划（附录 E）。13 张线框图 lint+render 通过。韩文/中文版本由本母版衍生。 |
+| v1.0 (EN master) | 2026-06-30 | 完整 局外(O1–O6)+局内(I1–I6) 标注式线框设计、网络采集参考（interfaceingame，8 款游戏）、设计令牌 + 决策追踪表、可选美术概念阶段、引擎绑定（附录 D）、可用性测试计划（附录 E）。13 张线框图 lint+render 通过。韩文/中文版本由本母版衍生。 |
 
 ## 附录 A. 方法论（依据）
 UX 设计意图各节以下列框架推理，但正文从不点名（通俗语言规则）。
@@ -1317,6 +1317,16 @@ python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render 
 ```
 全部 13 张线框图通过 `validate_wireframe.py`（XML、背景矩形、≤10 标注、徽标出现两次、引线 ≤4 点且不交叉、留白每侧 ≤6、无越界画布）+ headless-Chrome 渲染目检。flow.svg 是流程线框图（豁免标注 linter）。
 
+### C-2. 可选美术概念阶段
+
+本文包含一张 I3 升级 / 选物界面的 UI 美术方向概念图：
+
+![升级 UI 美术概念](art-concepts/levelup-ui-art-concept.png)
+
+源提示词：[`art-concepts/levelup-ui-art-concept.prompt.md`](art-concepts/levelup-ui-art-concept.prompt.md)。
+该图基于 I3 线框图、GDD/设计上下文、视觉令牌和已收集参考说明生成。
+它只用于确认氛围与材质方向；精确文字、尺寸、状态、数据绑定和无障碍规则仍以本文档与令牌文件为准。
+
 ## 附录 D. 实现绑定 — Unity 6 UI Toolkit × DOTS/ECS
 > 在所选技术栈（Unity 6 · DOTS · UI Toolkit）上以**事件驱动、无 GC**方式实现 §5 数据绑定。权威参考：`unity-dots-manual`、弹幕地狱渲染配方。最终决定 = TDD。
 
@@ -1345,7 +1355,6 @@ python <skill>/templates/build_docx.py lucid_dawn_ui_ux_design.en.md   # render 
 - **指标**：逐任务 成功/时间/错误 · SUS · 乐趣/投入度问卷 · **混乱下可读性**（冻结的高密度截图识别准确率，色盲场次单独）· 无障碍（色盲识别 / 开关行为）。
 - **通过线 / 迭代**：核心任务（T1·T2·T3·T6）成功率 ≥85%，T2 的 1s 读取 ≥90%，色盲致命物识别 =100%。未达标 → 在追踪表调整对应数值并复测；并在 §8 反映。
 - **局限**：这是*测试设计*。真实可点击原型 / 场次 / SUS 统计 需要构建 + 人员 —— 此处未执行。
-
 
 
 

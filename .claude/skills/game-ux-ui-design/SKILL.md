@@ -4,10 +4,12 @@ description: >-
   Produce an exemplary game UX/UI design document (UI/UX 디자인 문서) from a GDD or feature
   brief — especially for survivor-like / bullet-heaven / roguelite games. Use when the
   user wants a UI design document, screen design document, HUD design doc, annotated wireframes, 화면 디자인 문서,
-  or "design the UI/UX for <screen>". Output is an annotated-wireframe design document: reference
-  images linked as separate files, wireframes derived from them, every UI element
-  numbered with a circle/rectangle region and a leader line pulled outside the frame to
-  a description, plus a plain-language "UX 설계 의도" for every screen that a mixed team can read.
+  UI art concept pass, or "design the UI/UX for <screen>". Output is an annotated-wireframe
+  design document: reference images linked as separate files, wireframes derived from them,
+  every UI element numbered with a circle/rectangle region and a leader line pulled outside
+  the frame to a description, plus a plain-language "UX 설계 의도" for every screen that a
+  mixed team can read. Optionally, generate 1-2 art-direction concept mockups from selected
+  wireframes using Codex/imagegen when available.
 ---
 
 # game-ux-ui-design — exemplary game UX/UI designs (디자인 문서)
@@ -26,6 +28,9 @@ A generic "make me a UI/UX design" prompt yields vague prose. This skill produce
    heuristics privately). This is the part most often done badly — make it readable, not an
    afterthought.
 5. **Recognized game-UI templates** (survivor-like / roguelite) baked into every screen.
+6. **Optional art-direction concept pass** — 1-2 representative screens rendered as concept
+   mockups from the wireframe + GDD tone + harvested references, to test whether the art
+   direction is worth pursuing before production UI art starts.
 
 ## When to use
 Triggered when the user asks to design the UI/UX of a game: a HUD, a screen, a
@@ -100,7 +105,7 @@ exists for stitching in extra sections if you ever want them.)
 - **Render gotcha:** `chrome --headless --screenshot=wireframes/x.png` sometimes writes nothing
   to a project subfolder (profile/permission). Render to a temp dir then copy into `wireframes/`.
 
-## Process — OPTIONAL downstream stages (steps 8–11): lift the design document to production-grade
+## Process — OPTIONAL downstream stages (steps 8–12): lift the design document to production-grade
 
 The base design document (steps 0–7) is an **annotated-wireframe design document, not a hi-fi mockup**. When the user
 wants it "production-grade / 출하급", add these. Each has a template; fill it as a companion doc
@@ -111,15 +116,25 @@ spacing / radius / **motion tokens (cite GDD timings)** / colorblind palette + *
 mapping** (UI Toolkit USS `--var`, Unreal Slate, CSS props). This is the single biggest gap — without
 it the "component inventory" is empty name-tags. Color never carries meaning alone.
 
-**9. Decisions/number tracker** (`templates/decisions-tracker.md` → `<design>_decisions.md`). Classify
+**9. UI art concept pass** (`templates/art-concept-brief.md` → `art-concepts/<screen-id>-brief.md`).
+Use this only when the user wants to see the visual direction, or when the wireframe needs an art
+lock before implementation. Pick **1-2 high-signal screens** (usually title/main, HUD, level-up,
+boss reward, or result), then follow `references/art-concept-imagegen.md`: combine GDD tone/core loop,
+the selected wireframe, visual tokens, and harvested reference notes into an image prompt. If
+Codex/imagegen is available, generate a bitmap concept under `art-concepts/`; if not, write the
+prompt/brief so an artist or image tool can run it later. Treat the image as **art direction**, not
+implementation truth: exact text, icons, layout measurements, and accessibility states still come
+from the design document/tokens.
+
+**10. Decisions/number tracker** (`templates/decisions-tracker.md` → `<design>_decisions.md`). Classify
 EVERY number as `GDD확정 / 표준 / 추정` with status `OPEN/PROPOSED/LOCKED`, proposed default + how to
 confirm. Collect all `[확정 필요]` here. Keeps author-guessed timings from masquerading as canon.
 
-**10. Engine binding** (`references/engine-binding.md` → a design document appendix). Tie §5 data-binding to the
+**11. Engine binding** (`references/engine-binding.md` → a design document appendix). Tie §5 data-binding to the
 chosen engine (UI Toolkit×DOTS, Unreal UMG×Mass…): no-GC event-driven updates, world vs screen space,
 heavy world text off the UI framework, localization. Grounds the design document in the real stack.
 
-**11. Usability test plan** (`templates/usability-test.md` → a design document appendix). Task scenarios ↔
+**12. Usability test plan** (`templates/usability-test.md` → a design document appendix). Task scenarios ↔
 acceptance criteria, metrics (success rate / SUS / readability-under-chaos / colorblind), pass bar,
 iteration loop. The UX 고찰 is heuristic reasoning — this is how it gets validated. (Wireframe-only
 claims like readability-under-chaos MUST be re-validated in an engine build.)
@@ -127,7 +142,7 @@ claims like readability-under-chaos MUST be re-validated in an engine build.)
 ## Load-bearing rules (do not skip — these are the silent failures)
 
 - **Positioning: this is a wireframe-level design document, not a hi-fi mockup.** Say so. Tokens (step 8),
-  mockups, clickable prototypes, and playtests (step 11) are downstream. Don't let "exemplary"
+  art concepts (step 9), clickable prototypes, and playtests (step 12) are downstream. Don't let "exemplary"
   read as "finished UI."
 - **Number-source labels.** Every numeric in a GWT/legend carries its provenance — cite the GDD
   line, mark `표준` (WCAG/platform), or tag `[PLACEHOLDER — needs GDD/playtest]`. Author-supplied
@@ -191,9 +206,11 @@ claims like readability-under-chaos MUST be re-validated in an engine build.)
   drawing — don't force survivor-like conventions onto a strategy/card/sim game.)
 - `references/annotated-wireframe-svg.md` — the SVG callout kit conventions + anti-crossing
   rules + the validation step.
+- `references/art-concept-imagegen.md` — optional Codex/imagegen workflow for turning 1-2
+  selected wireframes into UI art-direction concept mockups.
 - `references/design-structure.md` — document skeleton, per-screen anatomy, and the hard rules.
 - `references/ui-ref-cli.md` — the `ui-ref` reference-harvesting workflow.
 - `templates/` — `design-skeleton.md`, `per-screen.md`, `wireframe-kit.svg`, `legend-table.md`,
-  `validate_wireframe.py` (SVG lint, step 6), `design-pdf.css` + `build_pdf.py` (landscape PDF,
-  step 7), `build_docx.py` (editable landscape Word, step 7).
+  `art-concept-brief.md`, `validate_wireframe.py` (SVG lint, step 6), `design-pdf.css` +
+  `build_pdf.py` (landscape PDF, step 7), `build_docx.py` (editable landscape Word, step 7).
 - `examples/` — a worked example design document (see `examples/README.md`).
