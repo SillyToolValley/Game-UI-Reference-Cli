@@ -22,6 +22,19 @@
 > **需登录的站点不在范围内。** 图库需要账号的站点（如 Mobbin 的应用截图）无法用本工具收集，且有意不支持。
 > 这是个人研究助手，不是通用爬虫，也不用于再分发他人素材。请尊重各站点条款与 `robots.txt`。
 
+## 它能找到什么 —— UI 参考
+
+核心工作是收集真实的游戏 UI 截图以研究设计模式。把 `ui-ref` 指向参考页面，它就会渲染页面、缓存元数据、
+下载缩略图 —— 再由你**按界面类型**整理。下面是为示例收集的参考，通过
+`ui-ref collect --browser --site interfaceingame` 从作品别页面获取：
+
+![ui-ref 按界面类型收集的 UI 参考](docs/captures/references-found.png)
+
+每次运行还会写出一张可浏览的**联系表**（`ui_research/manifests/contact_sheet_*.html`），其中下载的缩略图
+内联显示，并附每张图的标题、尺寸与**来源链接**，外加一份**清单**（`scan-local` →
+`local_ui_refs_manifest.{json,md}`）。这些收集到的参考正是下方线框图的**来源** —— 每个规格界面都注明了
+它所借鉴的具体截图。
+
 ## 成果示例
 
 一个完整的实战示例位于 **[`examples/lucid-dawn/`](examples/lucid-dawn/)** —— 一款 survivor-like/roguelite
@@ -66,6 +79,11 @@ GDD 锁定 / 标准 / 估算），以及 **引擎绑定（UI Toolkit × DOTS）*
 | 终极 (A9) | 充能填充 | 释放过场 | <100 则变暗 + 剩余量 | 上次值 + 警告边框 |
 
 </details>
+
+下面是一张**真实渲染的规格书页面**（游戏内 HUD 界面 —— 参考截图、带标注线框图，以及完整的 10 列图例表，
+即交付原样）：
+
+![规格书页面示例 —— 游戏内 HUD](docs/captures/spec-page-hud.png)
 
 **更多界面** —— 全部见 [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/)：
 

@@ -24,6 +24,19 @@
 > 수집할 수 없으며 의도적으로 미지원이다. 이건 개인 연구 보조 도구지 범용 스크레이퍼가 아니며,
 > 타인의 에셋을 재배포하기 위한 것도 아니다. 각 사이트의 약관과 `robots.txt`를 존중하라.
 
+## 찾아내는 것 — UI 레퍼런스
+
+이 도구의 핵심은 실제 게임 UI 스크린샷을 모아 패턴을 연구하게 하는 것이다. `ui-ref`에 레퍼런스 페이지를
+가리키면 렌더링하고, 메타데이터를 캐시하고, 썸네일을 받아 —— 사용자가 **화면 유형별로** 정리한다. 아래는
+샘플을 위해 `ui-ref collect --browser --site interfaceingame`로 per-game 페이지에서 수집한 레퍼런스다:
+
+![ui-ref가 화면 유형별로 수집한 UI 레퍼런스](docs/captures/references-found.png)
+
+각 실행은 받은 썸네일이 제목·크기·**출처 링크**와 함께 인라인 렌더되는 **콘택트 시트**
+(`ui_research/manifests/contact_sheet_*.html`)와 **매니페스트**(`scan-local` →
+`local_ui_refs_manifest.{json,md}`)도 쓴다. 이렇게 모은 레퍼런스가 아래 와이어프레임의 **출처**이며,
+각 스펙 화면은 자기가 차용한 정확한 샷을 인용한다.
+
 ## 결과물 샘플
 
 완성된 실제 예시가 **[`examples/lucid-dawn/`](examples/lucid-dawn/)** 에 있다 — survivor-like/로그라이트
@@ -68,6 +81,11 @@ GDD확정 / 표준 / 추정으로 분류), 그리고 **엔진 바인딩(UI Toolk
 | 궁극기 (A9) | 충전 채움 | 발동 시네마틱 | <100이면 흐림 + 남은량 | 마지막값 + 경고 테두리 |
 
 </details>
+
+아래는 **실제 렌더된 스펙 페이지**다(인게임 HUD 화면 — 참조 스크린샷, 주석 와이어프레임, 10열 범례 표
+전체, 산출물 그대로):
+
+![스펙 페이지 샘플 — 인게임 HUD](docs/captures/spec-page-hud.png)
 
 **더 많은 화면** — 전체는 [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/):
 

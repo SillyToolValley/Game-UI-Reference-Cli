@@ -29,6 +29,20 @@ It is deliberately conservative and polite:
 > and not for redistributing other people's assets. Respect each site's terms and
 > `robots.txt`.
 
+## What it finds — UI references
+
+The core job is gathering real game-UI screenshots so you can study patterns. Point `ui-ref` at
+reference pages and it renders them, caches metadata, and downloads thumbnails — which you curate
+**by screen type**. Below are references it pulled for the sample, via
+`ui-ref collect --browser --site interfaceingame` from per-game pages:
+
+![UI references gathered by ui-ref, grouped by screen type](docs/captures/references-found.png)
+
+Every run also writes a browsable **contact sheet** (`ui_research/manifests/contact_sheet_*.html`)
+where downloaded thumbnails render inline with each image's title, size, and **source link**, plus a
+**manifest** (`scan-local` → `local_ui_refs_manifest.{json,md}`). These gathered references are what
+the wireframes below are **derived from** — each spec screen cites the exact shots it borrows from.
+
 ## Sample output
 
 A full worked example lives in **[`examples/lucid-dawn/`](examples/lucid-dawn/)** — a complete UX/UI
@@ -76,6 +90,11 @@ State matrix (excerpt):
 | Ult (A9) | charging fill | cinematic on fire | dim + remaining if <100 | last value + warning border |
 
 </details>
+
+Here's an **actual rendered page** of the spec (the in-game HUD screen — reference shots, the
+annotated wireframe, and the full 10-column legend table, exactly as delivered):
+
+![Sample spec page — in-game HUD](docs/captures/spec-page-hud.png)
 
 **More screens** — full set in [`examples/lucid-dawn/wireframes/`](examples/lucid-dawn/wireframes/):
 
@@ -128,18 +147,18 @@ ui-ref scan-local
 ## Companion skill: `game-ui-spec`
 
 This repo ships a **Claude Code skill** that turns the references you gather here into an
-**exemplary game UX/UI design spec (UI/UX 기획서)** — purpose-built for survivor-like /
+**exemplary game UX/UI design spec** — purpose-built for survivor-like /
 bullet-heaven / roguelite games. It lives in [`.claude/skills/game-ui-spec/`](.claude/skills/game-ui-spec/).
 
 Given a GDD or feature brief, it produces a spec where:
 
-- **reference images are linked as separate files** (harvested with `ui-ref`, never embedded);
+- **reference images are embedded inline** in each screen (harvested with `ui-ref`);
 - **wireframes are derived from those references**, with **every UI element numbered**, its
   region marked by a rectangle/circle, and a **leader line pulled outside the frame** to a
   description (SVG annotated-callout kit — see
   [`templates/wireframe-kit.svg`](.claude/skills/game-ui-spec/templates/wireframe-kit.svg));
 - each screen carries a **legend table, state matrix, input-parity, and data-binding** tables;
-- every screen gets a rigorous **`UX 고찰`** section grounded in named game-UX heuristics
+- every screen gets a rigorous **UX rationale** section grounded in named game-UX heuristics
   (Hodent, Nielsen, Pinelle/PLAY, accessibility guidelines); and
 - the markdown source renders to a **wide 16:9 landscape PDF** (`build_pdf.py` + `spec-pdf.css`)
   so the dense spec tables stay readable for sharing.
@@ -150,7 +169,7 @@ See **[`examples/lucid-dawn/`](examples/lucid-dawn/)** for a full generated samp
 
 To use it in your game project, copy the skill folder to that project's `.claude/skills/`
 (or to `~/.claude/skills/` for all projects), then ask Claude Code to "draw up the UX/UI
-기획서 for &lt;screen&gt;".
+spec for &lt;screen&gt;".
 
 ## Commands
 
