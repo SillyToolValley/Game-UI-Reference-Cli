@@ -8,10 +8,7 @@
 
 <img src="examples/lucid-dawn/art-concepts/levelup-ui-art-concept.png" alt="ui-ref 레퍼런스 기반으로 생성한 레벨업 UI 아트 컨셉" width="900">
 
-**이 CLI로 수집한 UI 레퍼런스를 기반으로 뽑은 컨셉 아트.** `game-ux-ui-design` 스킬은 안정된
-와이어프레임, GDD/디자인 맥락, 수집 레퍼런스 메모를 바탕으로 Codex/imagegen에 UI 아트 방향성 목업을
-요청할 수 있다. 이 이미지는 무드/재질 방향 확인용이며, 정확한 문구·치수·상태·접근성 규칙은 디자인 문서와
-토큰을 기준으로 한다.
+<p align="center"><b>Concept art generated from UI references collected with this CLI</b></p>
 
 게임 UI에 초점을 둔, 의존성 가벼운 **UI 레퍼런스 리서치** CLI. 로컬에 모아둔 UI 레퍼런스 이미지를
 인덱싱하고, (선택적으로) 공개 UI 데이터베이스의 레퍼런스 페이지를 수집 — 렌더링하고, HTML·이미지

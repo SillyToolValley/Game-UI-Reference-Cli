@@ -8,10 +8,7 @@
 
 <img src="examples/lucid-dawn/art-concepts/levelup-ui-art-concept.png" alt="Generated level-up UI art concept from ui-ref references" width="900">
 
-**Concept art generated from UI references collected with this CLI.** The `game-ux-ui-design`
-skill can take a stable wireframe, GDD/design context, and harvested reference notes, then ask
-Codex/imagegen for UI art-direction mockups. This image is for mood/material direction; exact
-text, measurements, states, and accessibility still come from the design document and tokens.
+<p align="center"><b>Concept art generated from UI references collected with this CLI</b></p>
 
 A small, dependency-light CLI for **UI reference research**, focused on game UI. It
 indexes the UI reference images you already keep locally, and (optionally) collects

@@ -8,9 +8,7 @@
 
 <img src="examples/lucid-dawn/art-concepts/levelup-ui-art-concept.png" alt="基于 ui-ref 参考生成的升级 UI 美术概念" width="900">
 
-**基于本 CLI 收集的 UI 参考生成的概念图。** `game-ux-ui-design` 技能可以把稳定线框图、GDD/设计上下文、
-已收集参考说明交给 Codex/imagegen，生成 UI 美术方向 mockup。此图只用于确认氛围与材质方向；精确文字、
-尺寸、状态和无障碍规则仍以设计文档和令牌为准。
+<p align="center"><b>Concept art generated from UI references collected with this CLI</b></p>
 
 一个聚焦游戏 UI、依赖极轻的 **UI 参考研究** 命令行工具。它会索引你本地已有的 UI 参考图，并（可选）
 从公开 UI 数据库收集参考页面——渲染页面、缓存其 HTML 与图片元数据、按需下载缩略图——以便研究 UI/UX 模式。

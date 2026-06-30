@@ -8,10 +8,7 @@
 
 <img src="examples/lucid-dawn/art-concepts/levelup-ui-art-concept.png" alt="ui-ref リファレンスを基に生成したレベルアップ UI アートコンセプト" width="900">
 
-**この CLI で収集した UI リファレンスを基に生成したコンセプトアート。** `game-ux-ui-design`
-スキルは、安定したワイヤーフレーム、GDD/デザイン文脈、収集済みリファレンスメモを Codex/imagegen に渡し、
-UI アート方向性 mockup を生成できる。この画像はムード/素材感の方向確認用であり、正確な文言・寸法・状態・
-アクセシビリティ規則はデザインドキュメントとトークンを基準にする。
+<p align="center"><b>Concept art generated from UI references collected with this CLI</b></p>
 
 ゲーム UI に特化した、依存の軽い **UI リファレンス調査** CLI。ローカルに保管している UI リファレンス画像を
 インデックス化し、（任意で）公開 UI データベースからリファレンスページを収集 —— レンダリングし、HTML と
